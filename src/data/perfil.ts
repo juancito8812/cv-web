@@ -64,7 +64,7 @@ export const experiencia = [
     periodo: '2024 — presente',
     puntos: [
       'Sitios corporativos llave en mano: diseño, desarrollo, dominio, despliegue y entrega.',
-      'Clientes en EE. UU. y Venezuela (Adima Design LLC, Grupo LA, Interliga).',
+      'Clientes en EE. UU. y Venezuela (Adima Design LLC, Interliga).',
     ],
   },
 ];

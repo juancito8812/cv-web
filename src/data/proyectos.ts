@@ -43,14 +43,6 @@ export const proyectos: Proyecto[] = [
     estado: 'linea',
   },
   {
-    nombre: 'Grupo LA — Construcción y Remodelaciones',
-    descripcion:
-      'Sitio de obra y remodelación: portafolio de proyectos, servicios y captación de clientes.',
-    stack: ['Astro', 'SEO', 'GitHub Pages'],
-    url: 'https://juancito8812.github.io/grupo-la-web/',
-    estado: 'linea',
-  },
-  {
     nombre: 'Tasa del Día',
     descripcion:
       'App móvil de tasa BCV con conversor Bs/USD en tiempo real. Distribución Android (Play y Galaxy Store).',
