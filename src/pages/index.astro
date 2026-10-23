@@ -452,12 +452,30 @@ const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
 
       /* PRINT */
       @media print {
-        :root { --bg: #fff; --bg-2: #fff; --ink: #111; --muted: #444; --line: #ccc; --accent: #067a5b; }
-        body::before, .top, .hero-actions, footer a, .skip { display: none !important; }
-        body { font-size: 11pt; }
-        .section { page-break-inside: avoid; border-top: 1px solid #ddd; padding: 1.2rem 0; }
-        .proj, .card, .card-side { border: 1px solid #ddd; }
-        a { color: #067a5b; }
+        :root {
+          --bg: #fff; --bg-2: #fff; --ink: #111; --muted: #3b3b3b;
+          --line: #d6d6d6; --accent: #067a5b; --accent-2: #067a5b;
+        }
+        body::before, .top, .hero-actions, .skip, .stats, .badge, .pulse, footer { display: none !important; }
+        body { font-size: 9.6pt; line-height: 1.38; }
+        .wrap { max-width: 100%; padding: 0 !important; }
+        .hero { min-height: 0 !important; padding: 0 0 .5rem !important; display: block !important; }
+        .hero .cols { display: block !important; }
+        h1 { font-size: 19pt !important; margin: 0 0 .25rem !important; }
+        .grad {
+          display: inline !important; font-size: 1em !important;
+          background: none !important; -webkit-text-fill-color: #067a5b; color: #067a5b;
+        }
+        .rol { font-size: 9.5pt !important; margin: .15rem 0 .45rem !important; }
+        .tagline { font-size: 9.2pt !important; max-width: 100% !important; margin: 0 0 .4rem !important; }
+        .section { padding: .65rem 0 !important; border-top: 1px solid #ddd; page-break-inside: auto; }
+        .sec-head, .section-note { margin-bottom: .35rem !important; }
+        .grid-2, .cols, .chips, .contact-lines { gap: .35rem !important; }
+        .card, .card-side, .proj, .contact-box, .facts > * { page-break-inside: avoid; padding: .4rem .55rem !important; margin-bottom: .3rem !important; }
+        .proj, .card, .card-side, .contact-box { border: 1px solid #ddd; }
+        .timeline .tl-head { page-break-after: avoid; }
+        .btn, .btn-sm { border: 1px solid #bbb; padding: .15rem .4rem; font-size: 8.5pt; }
+        a { color: #067a5b; text-decoration: none; }
       }
     </style>
   </body>
