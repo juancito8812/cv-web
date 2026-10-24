@@ -34,6 +34,11 @@ export const servicios = [
     texto:
       'Servidores Linux, Docker, Cloudflare, backups y monitoreo con alertas. Sitios que no se caen solos.',
   },
+  {
+    titulo: 'Auditoría web y SEO técnico',
+    texto:
+      'Informe de 8 páginas con notas por área (diseño, accesibilidad, rendimiento, conversión y SEO), mediciones reales en móvil y escritorio, y plan de arreglos priorizado con el ahorro estimado de cada uno.',
+  },
 ];
 
 export const habilidades = [
@@ -46,6 +51,7 @@ export const habilidades = [
   'Docker',
   'n8n',
   'Cloudflare',
+  'SEO técnico',
   'Git / GitHub Actions',
   'Linux (Debian)',
   'Pine Script',
@@ -66,6 +72,7 @@ export const experiencia = [
     periodo: '2024 — presente',
     puntos: [
       'Sitios corporativos llave en mano: diseño, desarrollo, dominio, despliegue y entrega.',
+      'Auditorías web con informe técnico: rendimiento medido, conversión, accesibilidad y SEO priorizados por impacto.',
       'Clientes en EE. UU. y Venezuela (Adima Design LLC, Interliga).',
     ],
   },

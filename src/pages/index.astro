@@ -113,7 +113,7 @@ const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
       <!-- SERVICIOS -->
       <section id="servicios" class="wrap section">
         <h2><span class="num">02</span> Qué hago</h2>
-        <div class="grid-2">
+        <div class="grid-3">
           {
             servicios.map((s, i) => (
               <article class="card">
@@ -374,6 +374,9 @@ const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
       .facts li { display: grid; gap: 0.1rem; font-size: 0.86rem; }
       .facts span { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
       .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      /* 5 tarjetas: la última ocupa 2 columnas para no dejar hueco en la fila final */
+      .grid-3 > :last-child:nth-child(odd) { grid-column: span 2; }
 
       /* TIMELINE */
       .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.6rem; }
@@ -446,6 +449,8 @@ const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
         .top nav { display: none; }
         .cols { grid-template-columns: 1fr; gap: 1.6rem; }
         .grid-2 { grid-template-columns: 1fr; }
+        .grid-3 { grid-template-columns: 1fr; }
+        .grid-3 > :last-child:nth-child(odd) { grid-column: auto; }
         .stats { grid-template-columns: repeat(2, 1fr); }
         .hero { padding-top: 3.5rem; }
       }
