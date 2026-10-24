@@ -6,7 +6,7 @@ export const perfil = {
   ubicacion: 'Caracas, Venezuela · Remoto',
   tagline:
     'Construyo sitios y aplicaciones que ya están en producción: catálogos, plataformas de pronósticos, generadores de QR y automatizaciones de WhatsApp. Nada de maquetas.',
-  email: 'juanraydel170@gmail.com',
+  email: 'juanraudel170@gmail.com',
   whatsapp: '+58 412-934-0473',
   github: 'https://github.com/juancito8812',
   web: 'https://yosoy222.com',
