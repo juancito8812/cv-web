@@ -5,7 +5,7 @@ export const perfil = {
   rol: 'Desarrollador Web Full-Stack & Automatización',
   ubicacion: 'Caracas, Venezuela · Remoto',
   tagline:
-    'Construyo sitios y aplicaciones que ya están en producción: 6 sitios en vivo, apps Android publicadas, generadores de QR y automatizaciones de WhatsApp. Nada de maquetas.',
+    'Construyo sitios y aplicaciones que ya están en producción: 4 proyectos en vivo (3 de clientes y un producto propio), apps Android publicadas y automatizaciones de WhatsApp. Nada de maquetas.',
   email: 'juanraudel170@gmail.com',
   whatsapp: '+58 412-934-0473',
   github: 'https://github.com/juancito8812',
@@ -57,7 +57,6 @@ export const habilidades = [
   'SEO técnico',
   'Git / GitHub Actions',
   'Linux (Debian)',
-  'Pine Script',
 ];
 
 export const experiencia = [
@@ -65,18 +64,19 @@ export const experiencia = [
     puesto: 'Fundador y desarrollador — J Solución Tecnológica',
     periodo: '2023 — presente',
     puntos: [
-      'Productos web propios en producción: tienda PWA con analítica, plataforma de pronósticos y generador de QR dinámicos con planes y métricas.',
-      'Automatización de atención y reportes con n8n para clientes de servicios.',
-      'Infraestructura propia: VPS con Docker y Caddy, servidores de homelab, backups y monitoreo con alertas 24/7.',
+      'Producto propio en producción: QR Dinámico (qrcoder.win), generador de QR con planes, redirecciones editables y métricas de escaneo. FastAPI + PostgreSQL en VPS con Docker y Caddy, 746 pruebas automatizadas.',
+      'Apps Android propias publicadas como APK firmado con actualización automática por GitHub Releases: Tasa del Día, PsicoTarot y SismoVE.',
+      'Operación de los productos: servidores Debian, Docker y Caddy, Cloudflare, backups y monitoreo con alertas 24/7.',
     ],
   },
   {
-    puesto: 'Desarrollo de sitios para clientes (freelance)',
+    puesto: 'Sitios y plataformas para clientes (freelance)',
     periodo: '2024 — presente',
     puntos: [
-      'Sitios corporativos llave en mano: diseño, desarrollo, dominio, despliegue y entrega.',
-      'Auditorías web con informe técnico: rendimiento medido, conversión, accesibilidad y SEO priorizados por impacto.',
-      'Clientes en EE. UU. y Venezuela (Adima Design LLC, Interliga).',
+      'YoSoy222 (Venezuela): tienda PWA de 49 productos con analítica propia en Supabase + GA4, service worker con versionado de caché validado en CI y headers de seguridad en Cloudflare.',
+      'Interliga — Futbol Camiseta Pasión: plataforma de pronósticos con registro, ranking en vivo, validación anti-trampa y Postgres con RLS por usuario.',
+      'Adima Design LLC (EE. UU.): sitio corporativo en Astro desplegado en VPS con SSL propio detrás de Cloudflare, entrega llave en mano.',
+      'Automatización de atención y reportes con n8n + WhatsApp/Telegram, y auditorías web con informe técnico priorizado por impacto.',
     ],
   },
 ];
