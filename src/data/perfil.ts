@@ -5,7 +5,7 @@ export const perfil = {
   rol: 'Desarrollador Web Full-Stack & Automatización',
   ubicacion: 'Caracas, Venezuela · Remoto',
   tagline:
-    'Construyo sitios y aplicaciones que ya están en producción: catálogos, plataformas de pronósticos, generadores de QR y automatizaciones de WhatsApp. Nada de maquetas.',
+    'Construyo sitios y aplicaciones que ya están en producción: 6 sitios en vivo, apps Android publicadas, generadores de QR y automatizaciones de WhatsApp. Nada de maquetas.',
   email: 'juanraudel170@gmail.com',
   whatsapp: '+58 412-934-0473',
   github: 'https://github.com/juancito8812',
@@ -22,7 +22,7 @@ export const servicios = [
   {
     titulo: 'Apps móviles',
     texto:
-      'Aplicaciones Android con React Native / Expo: tasa de cambio, consultas y utilidades, publicadas en tienda.',
+      'Aplicaciones Android con React Native / Expo y Flutter: tasa de cambio, tarot, alertas sísmicas. APK firmado y actualización automática desde GitHub Releases.',
   },
   {
     titulo: 'Automatización y bots',
@@ -43,12 +43,15 @@ export const servicios = [
 
 export const habilidades = [
   'Astro',
+  'Next.js',
   'JavaScript / TypeScript',
   'React / React Native',
+  'Flutter / Dart',
+  'FastAPI',
   'Node.js',
   'Python',
   'Supabase / PostgreSQL',
-  'Docker',
+  'Docker / Caddy',
   'n8n',
   'Cloudflare',
   'SEO técnico',
@@ -62,9 +65,9 @@ export const experiencia = [
     puesto: 'Fundador y desarrollador — J Solución Tecnológica',
     periodo: '2023 — presente',
     puntos: [
-      'Desarrollo y mantenimiento de productos web propios en producción (catálogos, QR dinámicos, pronósticos).',
+      'Productos web propios en producción: tienda PWA con analítica, plataforma de pronósticos y generador de QR dinámicos con planes y métricas.',
       'Automatización de atención y reportes con n8n para clientes de servicios.',
-      'Instalación de cámaras, mantenimiento de hardware y software para negocios locales.',
+      'Infraestructura propia: VPS con Docker y Caddy, servidores de homelab, backups y monitoreo con alertas 24/7.',
     ],
   },
   {
