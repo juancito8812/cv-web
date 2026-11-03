@@ -53,14 +53,14 @@ const anio = new Date().getFullYear();
       <section class="hero">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow"><i class="dot"></i> Desarrollo · Caracas</p>
-            <h1>
+            <p class="eyebrow" data-reveal><i class="dot"></i> Desarrollo · Caracas</p>
+            <h1 data-words="320">
               {perfil.nombres}<br />
               <span class="h1-dim">{perfil.apellidos}</span>
             </h1>
-            <p class="subhead" set:html={perfil.rol.replace(' & ', ' &\u00A0')}></p>
-            <p class="tagline">{perfil.tagline}</p>
-            <div class="hero-actions">
+            <p class="subhead" data-words="80" data-words-base="820" set:html={perfil.rol.replace(' & ', ' &\u00A0')}></p>
+            <p class="tagline" data-reveal style="--d:1100ms">{perfil.tagline}</p>
+            <div class="hero-actions" data-reveal style="--d:1250ms">
               <a class="pill pill-solid" href="#proyectos">Ver proyectos</a>
               <a class="pill pill-ghost" href="#contacto">Hablemos →</a>
             </div>
@@ -118,7 +118,7 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <header class="sec-head">
             <p class="eyebrow"><i class="dot"></i> Perfil</p>
-            <h2>Quién está detrás<br />de este portafolio</h2>
+            <h2 data-words="170">Quién está detrás<br />de este portafolio</h2>
           </header>
           <div class="cols">
             <div class="prose">
@@ -152,12 +152,12 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <header class="sec-head">
             <p class="eyebrow"><i class="dot"></i> Servicios</p>
-            <h2>Lo que puedo<br />construir para ti</h2>
+            <h2 data-words="170">Lo que puedo<br />construir para ti</h2>
           </header>
           <div class="grid-3">
             {
               servicios.map((s, i) => (
-                <article class="card">
+                <article class="card" data-reveal>
                   <div class="card-top">
                     <span class="card-icon">{['▤', '▢', '◆', '⚙', '◈', '⌘'][i] ?? '▤'}</span>
                     <span class="mono dim">{String(i + 1).padStart(2, '0')}</span>
@@ -185,7 +185,7 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <header class="sec-head">
             <p class="eyebrow"><i class="dot"></i> Experiencia</p>
-            <h2>Trabajo, en orden<br />cronológico</h2>
+            <h2 data-words="170">Trabajo, en orden<br />cronológico</h2>
           </header>
 
           <ol class="timeline">
@@ -224,7 +224,7 @@ const anio = new Date().getFullYear();
           <header class="sec-head sec-head-row">
             <div>
               <p class="eyebrow"><i class="dot"></i> Proyectos</p>
-              <h2>Trabajo en vivo</h2>
+              <h2 data-words="170">Trabajo en vivo</h2>
             </div>
             <a class="pill pill-ghost" href={perfil.github} target="_blank" rel="noopener noreferrer">Ver repositorios →</a>
           </header>
@@ -233,7 +233,7 @@ const anio = new Date().getFullYear();
           <div class="grid-2">
             {
               enLinea.map((p, i) => (
-                <a class="proj" href={p.url} target="_blank" rel="noopener noreferrer">
+                <a class="proj" data-reveal href={p.url} target="_blank" rel="noopener noreferrer">
                   <div class="cover hatch">
                     <span class="mono cover-name">{p.nombre}</span>
                     <span class="badge live"><i class="dot"></i> En línea</span>
@@ -261,7 +261,7 @@ const anio = new Date().getFullYear();
           <div class="grid-2">
             {
               enDesarrollo.map((p, i) => (
-                <div class="proj proj-soon">
+                <div class="proj proj-soon" data-reveal>
                   <div class="cover hatch">
                     <span class="mono cover-name">{p.nombre}</span>
                     <span class="badge soon"><i class="dot dim-dot"></i> En desarrollo</span>
@@ -291,7 +291,7 @@ const anio = new Date().getFullYear();
           <div class="contact-box hatch">
             <div class="contact-copy">
               <p class="eyebrow"><i class="dot"></i> Contacto</p>
-              <h2>¿Construimos<br />algo juntos?</h2>
+              <h2 data-words="170">¿Construimos<br />algo juntos?</h2>
               <p class="contact-note">
                 Proyecto nuevo, mantenimiento o algo que ya existe y necesita manos. Respondo el mismo día.
               </p>
@@ -640,7 +640,32 @@ const anio = new Date().getFullYear();
       }
 
       /* ---------- PRINT ---------- */
+
+      /* ---------- animación de entrada (palabra a palabra) ---------- */
+      .js [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0ms); }
+      .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+      .wv { display: inline-block; white-space: pre; opacity: 0; filter: blur(18px); transform: translateY(20px); will-change: filter, transform, opacity; }
+      .js [data-words].is-in .wv { animation: cv-word 1600ms cubic-bezier(.5,0,.2,1) both; }
+      @keyframes cv-word {
+        from { opacity: 0; filter: blur(18px); transform: translateY(20px); }
+        to { opacity: 1; filter: blur(0); transform: translateY(0); }
+      }
+      .js .tl > li { opacity: 0; transform: translateY(12px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+      .js .tl > li.is-in { opacity: 1; transform: none; }
+      .js .grid-3 > *:nth-child(2), .js .tl > li:nth-child(2) { transition-delay: 70ms; }
+      .js .grid-3 > *:nth-child(3), .js .tl > li:nth-child(3) { transition-delay: 140ms; }
+      .js .grid-3 > *:nth-child(4) { transition-delay: 210ms; }
+      .js .grid-3 > *:nth-child(5) { transition-delay: 280ms; }
+      .js .grid-3 > *:nth-child(6) { transition-delay: 350ms; }
+      .js .grid-3 > *:nth-child(2).is-in, .js .tl > li:nth-child(2).is-in { transition-delay: 70ms; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .js [data-reveal], .js .tl > li, .wv { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
+      }
+
       @media print {
+        [data-reveal], .wv, .tl > li { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
         :root {
           --bg: #fff; --surface: #fff; --surface-2: #fff;
           --ink: #111; --body: #333; --muted: #555;
@@ -673,5 +698,54 @@ const anio = new Date().getFullYear();
         a { color: #0a6b46 !important; text-decoration: none !important; }
       }
     </style>
+
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var nodes = document.querySelectorAll('[data-reveal], [data-words], .tl > li');
+
+        if (!('IntersectionObserver' in window) || reduce) {
+          nodes.forEach(function (n) { n.classList.add('is-in'); });
+        } else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              e.target.classList.add('is-in');
+              io.unobserve(e.target);
+            });
+          }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+          nodes.forEach(function (n) { io.observe(n); });
+        }
+
+        if (!reduce) {
+          try {
+            document.querySelectorAll('[data-words]').forEach(function (el) {
+              var step = Number(el.getAttribute('data-words')) || 170;
+              var base = Number(el.getAttribute('data-words-base')) || 0;
+              var i = 0;
+              var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+              var textNodes = [];
+              while (walker.nextNode()) textNodes.push(walker.currentNode);
+              textNodes.forEach(function (node) {
+                var frag = document.createDocumentFragment();
+                node.nodeValue.split(/(\s+)/).forEach(function (part) {
+                  if (!part) return;
+                  if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+                  var span = document.createElement('span');
+                  span.className = 'wv';
+                  span.style.animationDelay = (base + i * step) + 'ms';
+                  span.textContent = part;
+                  frag.appendChild(span);
+                  i++;
+                });
+                node.parentNode.replaceChild(frag, node);
+              });
+            });
+          } catch (err) { /* nunca dejar texto oculto */ }
+        }
+      }());
+    </script>
   </body>
 </html>
