@@ -5,6 +5,8 @@ export interface Proyecto {
   descripcion: string;
   stack: string[];
   url?: string;
+  /** Enlace de descarga (APK / releases) para proyectos sin web pública. */
+  descarga?: string;
   estado: Estado;
   /** true = hecho para un cliente; false/omitido = producto propio. */
   cliente?: boolean;
@@ -52,6 +54,7 @@ export const proyectos: Proyecto[] = [
     descripcion:
       'App Android de tasa BCV y paralelo con conversor, histórico y actualización automática desde GitHub Releases (v1.6.11). Desarrollo guiado por tests, incluida la validación de cuentas bancarias.',
     stack: ['React Native', 'Expo', 'TypeScript', 'Jest'],
+    descarga: 'https://github.com/juancito8812/tasa-del-dia-app-/releases/latest',
     estado: 'desarrollo',
   },
   {
