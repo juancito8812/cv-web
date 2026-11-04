@@ -11,7 +11,7 @@ const anio = new Date().getFullYear();
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="cv-build" content="anim-v4" />
+    <meta name="cv-build" content="anim-v7" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{perfil.nombre} — {perfil.rol}</title>
     <meta name="description" content={perfil.tagline} />
@@ -672,7 +672,9 @@ const anio = new Date().getFullYear();
       }
 
       @media print {
-        [data-reveal], .wv, .tl > li { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
+        /* el encabezado de sección no se queda huérfano al pie de página */
+        #proyectos .sec-head { break-after: avoid; page-break-after: avoid; }
+        [data-reveal], .wv, .timeline > li { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
         :root {
           --bg: #fff; --surface: #fff; --surface-2: #fff;
           --ink: #111; --body: #333; --muted: #555;
@@ -691,7 +693,7 @@ const anio = new Date().getFullYear();
         .eyebrow .dot { display: none !important; }
         h2 { font-size: 13pt !important; }
         .section { padding: 0.5rem 0 !important; border-top: 1px solid #ddd; page-break-inside: auto; }
-        .sec-head { margin-bottom: 0.3rem !important; }
+        .sec-head { margin-bottom: 0.3rem !important; break-after: avoid; page-break-after: avoid; }
         .grid-2, .grid-3 { grid-template-columns: repeat(2, 1fr) !important; gap: 0.3rem !important; }
         .grid-3 > :last-child:nth-child(odd) { grid-column: auto !important; }
         .card, .card-side, .proj, .contact-box { background: #fff !important; border: 1px solid #ddd !important; padding: 0.36rem 0.5rem !important; page-break-inside: avoid; }
