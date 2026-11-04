@@ -44,7 +44,7 @@ export const proyectos: Proyecto[] = [
   {
     nombre: 'QR Dinámico',
     descripcion:
-      'Producto propio: generador de QR dinámicos multi-usuario con planes, redirecciones editables y métricas de escaneo. FastAPI + Alembic en VPS con Docker y Caddy; 746 tests y render de imágenes movido a threadpool (loop sin bloqueos).',
+      'Producto propio en producción: plataforma de QR dinámicos para negocios. El destino de cada código se edita sin reimprimir, con métricas de escaneo por campaña y cuentas de equipo. Se vende por planes de suscripción.',
     stack: ['FastAPI', 'PostgreSQL', 'Docker', 'Caddy', 'VPS'],
     url: 'https://qrcoder.win',
     estado: 'linea',
