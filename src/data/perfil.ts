@@ -64,7 +64,7 @@ export const experiencia = [
     puesto: 'Fundador y desarrollador — J Solución Tecnológica',
     periodo: '2023 — presente',
     puntos: [
-      'Producto propio en producción: QR Dinámico (qrcoder.win), generador de QR con planes, redirecciones editables y métricas de escaneo. FastAPI + PostgreSQL en VPS con Docker y Caddy, 746 pruebas automatizadas.',
+      'Producto propio en producción: QR Dinámico (qrcoder.win), plataforma de QR para negocios con planes de suscripción, destino editable por código y métricas de escaneo. FastAPI + PostgreSQL sobre Docker en VPS propio.',
       'Apps Android propias publicadas como APK firmado con actualización automática por GitHub Releases: Tasa del Día, PsicoTarot y SismoVE.',
       'Operación de los productos: servidores Debian, Docker y Caddy, Cloudflare, backups y monitoreo con alertas 24/7.',
     ],

@@ -11,7 +11,7 @@ const anio = new Date().getFullYear();
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="cv-build" content="anim-v7" />
+    <meta name="cv-build" content="anim-v9" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{perfil.nombre} — {perfil.rol}</title>
     <meta name="description" content={perfil.tagline} />
@@ -124,8 +124,8 @@ const anio = new Date().getFullYear();
           <div class="cols">
             <div class="prose">
               <p class="lead">
-                Desarrollador autodidacta radicado en Caracas. Aprendí construyendo sistemas reales para
-                clientes y para mis propios productos: tiendas en línea, plataformas de pronósticos,
+                Desarrollador full-stack radicado en Caracas, con formación autodidacta y capacitación
+                continua. Aprendí construyendo sistemas reales para clientes y para mis propios productos: tiendas en línea, plataformas de pronósticos,
                 generadores de QR dinámicos y automatizaciones de mensajería. Todo lo que hago termina
                 publicado y en uso.
               </p>
@@ -141,6 +141,7 @@ const anio = new Date().getFullYear();
                 <li><span>Ubicación</span><strong>{perfil.ubicacion}</strong></li>
                 <li><span>Idiomas</span><strong>Español (nativo) · Inglés técnico</strong></li>
                 <li><span>Modalidad</span><strong>Remoto · Proyectos por hitos</strong></li>
+                <li><span>Formación</span><strong>Autodidacta · capacitación continua</strong></li>
                 <li><span>GitHub</span><strong><a href={perfil.github} target="_blank" rel="noopener noreferrer">juancito8812 ↗</a></strong></li>
               </ul>
             </aside>
@@ -700,6 +701,8 @@ const anio = new Date().getFullYear();
         .card-top { display: none !important; }
         .card h3, .proj-info h4, .tl-head h3 { font-size: 9pt !important; }
         .card p, .proj-info p, .bullets li { font-size: 8pt !important; color: #333 !important; }
+        .lead { color: #222 !important; font-size: 9pt !important; }
+        .prose p { color: #333 !important; }
         .timeline > li { grid-template-columns: 24px 1fr !important; gap: 0.3rem !important; padding: 0.28rem 0 !important; }
         .chips li, .stack li { font-size: 6.6pt !important; border-color: #ddd !important; color: #444 !important; }
         .mono { font-size: 6.6pt !important; color: #666 !important; }
