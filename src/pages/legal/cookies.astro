@@ -1,0 +1,101 @@
+---
+import Legal from '../../layouts/Legal.astro';
+import { agencia } from '../../data/agencia';
+
+const secciones = [
+  { id: 'que-son', texto: 'Qué son las cookies' },
+  { id: 'propias', texto: 'Cookies propias' },
+  { id: 'terceros', texto: 'Terceros y recursos externos' },
+  { id: 'gestion', texto: 'Cómo gestionarlas' },
+  { id: 'cambios', texto: 'Cambios' },
+];
+---
+
+<Legal
+  titulo="Política de cookies"
+  descripcion="Este sitio no usa cookies de publicidad ni de analítica. Aquí explicamos qué se carga al navegar y cómo controlarlo."
+  ruta="/legal/cookies"
+  secciones={secciones}
+>
+  <h2 id="que-son">1. Qué son las cookies y tecnologías similares</h2>
+  <p>
+    Las cookies son pequeños archivos de texto que un sitio guarda en tu navegador para recordar información
+    entre páginas o entre visitas. Junto a ellas existen tecnologías equivalentes, como el almacenamiento local
+    del navegador (<em>localStorage</em>) o los píxeles de seguimiento.
+  </p>
+
+  <h2 id="propias">2. Cookies propias de este sitio</h2>
+  <blockquote>
+    <strong>Este sitio no instala cookies propias.</strong> No hay inicio de sesión, carrito de compras,
+    formularios de registro ni preferencias que necesitemos recordar entre visitas. Tampoco utilizamos
+    herramientas de analítica, publicidad o seguimiento de terceros (Google Analytics, Meta Pixel, Hotjar ni
+    similares), ni almacenamos información en <em>localStorage</em>.
+  </blockquote>
+  <p>
+    Por ese motivo no verás un aviso de "aceptar cookies": al no existir cookies que requieran consentimiento,
+    un banner sería innecesario.
+  </p>
+
+  <h2 id="terceros">3. Recursos externos y cookies de terceros</h2>
+  <p>
+    Aunque el sitio no instala cookies propias, al cargar las páginas tu navegador se comunica con proveedores
+    externos que sí pueden registrar datos técnicos:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Proveedor</th><th>Para qué</th><th>Qué puede registrar</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google Fonts (Google LLC)</td>
+        <td>Entrega de las tipografías Inter y JetBrains Mono</td>
+        <td>Dirección IP, navegador y página de origen; no instala cookies por sí mismo</td>
+      </tr>
+      <tr>
+        <td>GitHub Pages (GitHub, Inc.)</td>
+        <td>Alojamiento del sitio</td>
+        <td>IP y datos de la petición en sus registros de seguridad</td>
+      </tr>
+      <tr>
+        <td>Cloudflare, Inc.</td>
+        <td>DNS, caché y protección frente a ataques</td>
+        <td>Cookies técnicas de seguridad cuando corresponde (por ejemplo <em>__cf_bm</em> o <em>cf_clearance</em>)</td>
+      </tr>
+      <tr>
+        <td>WhatsApp (Meta Platforms, Inc.)</td>
+        <td>Comunicación, solo si haces clic en un enlace de WhatsApp</td>
+        <td>Cookies propias de WhatsApp una vez abandonas este sitio</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Las cookies de Cloudflare son estrictamente necesarias para la seguridad del servicio y están exceptuadas
+    del consentimiento previo. Puedes consultar las políticas de cada proveedor para más detalle.
+  </p>
+
+  <h2 id="gestion">4. Cómo gestionar o eliminar cookies</h2>
+  <p>
+    Puedes bloquear, eliminar o limitar las cookies desde la configuración de tu navegador. Ten en cuenta que
+    bloquear las cookies técnicas de seguridad puede afectar la carga del sitio:
+  </p>
+  <ul>
+    <li>Chrome: Configuración → Privacidad y seguridad → Cookies y otros datos de sitios.</li>
+    <li>Firefox: Ajustes → Privacidad y seguridad → Cookies y datos del sitio.</li>
+    <li>Safari: Preferencias → Privacidad → Gestionar datos de sitios web.</li>
+    <li>Edge: Configuración → Cookies y permisos del sitio → Cookies y datos del sitio.</li>
+  </ul>
+  <p>
+    También puedes usar el modo incógnito o privado de tu navegador para navegar sin conservar cookies al
+    cerrar la sesión.
+  </p>
+
+  <h2 id="cambios">5. Cambios en esta política</h2>
+  <p>
+    Si en el futuro incorporamos herramientas que instalen cookies (por ejemplo, analítica de visitas), lo
+    indicaremos aquí y habilitaremos el mecanismo de consentimiento correspondiente antes de activarlas.
+  </p>
+  <p>
+    Para el tratamiento de tus datos personales, consulta la
+    <a href="/legal/privacidad">política de privacidad</a>.
+  </p>
+</Legal>

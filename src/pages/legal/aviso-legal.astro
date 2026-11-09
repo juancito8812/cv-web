@@ -1,0 +1,115 @@
+---
+import Legal from '../../layouts/Legal.astro';
+import { agencia } from '../../data/agencia';
+
+const secciones = [
+  { id: 'titular', texto: 'Titular del sitio' },
+  { id: 'objeto', texto: 'Objeto y naturaleza' },
+  { id: 'uso', texto: 'Uso del sitio' },
+  { id: 'propiedad', texto: 'Propiedad intelectual' },
+  { id: 'enlaces', texto: 'Enlaces a terceros' },
+  { id: 'responsabilidad', texto: 'Responsabilidad' },
+  { id: 'datos', texto: 'Datos personales' },
+  { id: 'ley', texto: 'Ley aplicable' },
+];
+---
+
+<Legal
+  titulo="Aviso legal"
+  descripcion={`Condiciones de uso e identificación del titular de ${agencia.nombre}, agencia de tecnología de la información en Caracas.`}
+  ruta="/legal/aviso-legal"
+  secciones={secciones}
+>
+  <h2 id="titular">1. Titular del sitio</h2>
+  <p>
+    Este sitio web, accesible en <strong>jsolucionestegnologicas.com</strong>, pertenece y es operado por
+    <strong>{agencia.nombre}</strong> ("la Agencia"), agencia de servicios de tecnología de la información
+    dedicada al desarrollo web, automatización de procesos, instalación de sistemas de cámaras (CCTV) y
+    soporte de infraestructura TI.
+  </p>
+  <ul>
+    <li><strong>Titular:</strong> {agencia.nombre}</li>
+    <li><strong>RIF:</strong> {agencia.rif || 'en trámite ante el SENIAT'}</li>
+    <li><strong>Domicilio:</strong> {agencia.domicilio}</li>
+    <li><strong>Correo:</strong> <a href={`mailto:${agencia.email}`}>{agencia.email}</a></li>
+    <li>
+      <strong>WhatsApp:</strong>
+      <a href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">{agencia.whatsappDisplay}</a>
+    </li>
+  </ul>
+
+  <h2 id="objeto">2. Objeto y naturaleza del sitio</h2>
+  <p>
+    El sitio tiene carácter <strong>informativo</strong>: describe los servicios de la Agencia, muestra
+    proyectos desarrollados y permite iniciar contacto por WhatsApp o correo electrónico. No es una tienda
+    en línea, no procesa pagos ni suscripciones, y no sustituye una cotización formal.
+  </p>
+  <p>
+    La información publicada no constituye oferta contractual. Toda relación de servicio se rige por la
+    cotización y el contrato aceptados por escrito entre el cliente y la Agencia, junto con los
+    <a href="/legal/terminos">términos y condiciones</a>.
+  </p>
+
+  <h2 id="uso">3. Uso del sitio</h2>
+  <p>Al navegar este sitio aceptas este aviso legal. Te comprometes a:</p>
+  <ul>
+    <li>usarlo únicamente con fines lícitos y conforme a la normativa venezolana aplicable;</li>
+    <li>no intentar acceder a áreas restringidas, alterar el sitio, ni realizar pruebas de intrusión sin autorización escrita;</li>
+    <li>no extraer contenido de forma masiva y automatizada (scraping) que afecte la disponibilidad del servicio;</li>
+    <li>no suplantar la identidad de la Agencia ni de terceros.</li>
+  </ul>
+
+  <h2 id="propiedad">4. Propiedad intelectual</h2>
+  <p>
+    El diseño, el código, los textos, las marcas, los logotipos y los elementos gráficos del sitio son
+    propiedad de la Agencia o se utilizan con licencia de sus titulares. Los nombres comerciales y marcas de
+    clientes y de terceros que aparecen en la sección de proyectos pertenecen a sus respectivos dueños y se
+    muestran únicamente como referencia de trabajos realizados.
+  </p>
+  <p>
+    Queda prohibida la reproducción, distribución, comunicación pública o transformación total o parcial del
+    contenido sin autorización previa y por escrito de la Agencia. Se permite citar fragmentos con mención de
+    la fuente y enlace al sitio original.
+  </p>
+
+  <h2 id="enlaces">5. Enlaces a sitios de terceros</h2>
+  <p>
+    El sitio puede contener enlaces a plataformas externas (por ejemplo WhatsApp, GitHub o sitios de
+    clientes). La Agencia no controla ni responde por sus contenidos, políticas de privacidad ni
+    disponibilidad; el acceso a ellos se realiza bajo tu propia responsabilidad y conforme a sus condiciones.
+  </p>
+
+  <h2 id="responsabilidad">6. Responsabilidad</h2>
+  <p>
+    La Agencia adopta medidas razonables para mantener la información actualizada y el sitio disponible, pero
+    no garantiza la ausencia de errores ni la continuidad ininterrumpida del servicio, que depende también de
+    proveedores externos de alojamiento y red.
+  </p>
+  <p>
+    En la medida permitida por la ley, la Agencia no será responsable por daños indirectos, lucro cesante o
+    pérdida de datos derivados del uso o de la imposibilidad de uso del sitio informativo. Esta limitación no
+    afecta las obligaciones asumidas en un contrato de servicios vigente.
+  </p>
+
+  <h2 id="datos">7. Protección de datos personales</h2>
+  <p>
+    El tratamiento de los datos que nos facilitas se describe en la
+    <a href="/legal/privacidad">política de privacidad</a>, y el uso de cookies y tecnologías similares en la
+    <a href="/legal/cookies">política de cookies</a>.
+  </p>
+
+  <h2 id="ley">8. Legislación aplicable y jurisdicción</h2>
+  <p>
+    Este aviso legal se rige por las leyes de la República Bolivariana de Venezuela, en particular por la
+    normativa sobre comercio electrónico, protección de datos personales, protección al consumidor y delitos
+    informáticos, en cuanto resulte aplicable.
+  </p>
+  <p>
+    Cualquier controversia derivada del uso del sitio se someterá a los tribunales competentes de la ciudad de
+    Caracas, sin perjuicio de las normas de protección al consumidor que resulten de aplicación obligatoria.
+  </p>
+  <p>
+    La Agencia puede actualizar este aviso para reflejar cambios en el sitio o en la normativa. La versión
+    vigente es siempre la publicada en esta página.
+  </p>
+</Legal>

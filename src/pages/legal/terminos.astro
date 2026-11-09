@@ -1,0 +1,188 @@
+---
+import Legal from '../../layouts/Legal.astro';
+import { agencia } from '../../data/agencia';
+
+const secciones = [
+  { id: 'ambito', texto: 'Ámbito' },
+  { id: 'cotizaciones', texto: 'Cotizaciones y alcance' },
+  { id: 'pagos', texto: 'Precios y pagos' },
+  { id: 'plazos', texto: 'Plazos y colaboración' },
+  { id: 'entrega', texto: 'Entrega y aceptación' },
+  { id: 'garantia', texto: 'Garantía y soporte' },
+  { id: 'propiedad', texto: 'Propiedad del trabajo' },
+  { id: 'terceros', texto: 'Servicios de terceros' },
+  { id: 'confidencialidad', texto: 'Confidencialidad' },
+  { id: 'cancelacion', texto: 'Cancelación' },
+  { id: 'responsabilidad', texto: 'Responsabilidad' },
+  { id: 'ley', texto: 'Ley aplicable' },
+];
+---
+
+<Legal
+  titulo="Términos y condiciones del servicio"
+  descripcion={`Condiciones generales aplicables a los servicios de desarrollo web, automatización, CCTV y soporte de ${agencia.nombre}.`}
+  ruta="/legal/terminos"
+  secciones={secciones}
+>
+  <h2 id="ambito">1. Ámbito de aplicación</h2>
+  <p>
+    Estos términos regulan la prestación de servicios de la Agencia en materia de desarrollo web y de
+    aplicaciones, automatización de procesos, instalación y configuración de sistemas de cámaras (CCTV) y
+    soporte de infraestructura TI.
+  </p>
+  <p>
+    Se aplican junto con la cotización o propuesta aceptada por el cliente. Si existe contradicción entre
+    ambos, prevalece lo pactado expresamente en la cotización firmada o aceptada por escrito.
+  </p>
+
+  <h2 id="cotizaciones">2. Cotizaciones y alcance del trabajo</h2>
+  <ul>
+    <li>Las cotizaciones se emiten por escrito (correo electrónico o mensaje) y detallan entregables, plazos y precio.</li>
+    <li>Tienen una vigencia de <strong>15 días calendario</strong>, salvo indicación distinta.</li>
+    <li>
+      El precio cubre exclusivamente el alcance descrito. Cualquier funcionalidad, sección o integración no
+      incluida se cotiza por separado antes de ejecutarse.
+    </li>
+    <li>
+      El cliente debe aprobar por escrito la cotización antes del inicio. El pago del anticipo equivale a la
+      aceptación de estos términos.
+    </li>
+  </ul>
+
+  <h2 id="pagos">3. Precios y forma de pago</h2>
+  <ul>
+    <li>Los precios se expresan en dólares estadounidenses (USD) como moneda de referencia y pueden pagarse en la moneda y por los medios acordados en la cotización.</li>
+    <li>
+      Salvo pacto distinto, se requiere un <strong>50 % de anticipo</strong> para reservar el cronograma e
+      iniciar el trabajo, y el <strong>50 % restante</strong> contra entrega y aceptación.
+    </li>
+    <li>Los trabajos de soporte, mantenimiento o bolsas de horas se facturan por adelantado o al cierre del período acordado.</li>
+    <li>Los impuestos, tasas o retenciones aplicables corren por cuenta del cliente cuando la ley lo disponga.</li>
+    <li>El retraso en el pago puede suspender el trabajo y los plazos de entrega, sin que ello genere responsabilidad para la Agencia.</li>
+  </ul>
+
+  <h2 id="plazos">4. Plazos y colaboración del cliente</h2>
+  <p>
+    Los plazos son estimados y comienzan a contar desde el anticipo y la entrega de los insumos necesarios. El
+    cliente se compromete a:
+  </p>
+  <ul>
+    <li>entregar textos, imágenes, logotipos y demás contenidos en formatos utilizables;</li>
+    <li>facilitar los accesos necesarios (dominio, hosting, cuentas de redes o mensajería) de forma segura;</li>
+    <li>responder consultas y aprobar avances en un plazo razonable;</li>
+    <li>garantizar que cuenta con los derechos y licencias sobre el material que entrega.</li>
+  </ul>
+  <p>
+    Los retrasos atribuibles al cliente extienden el cronograma en la misma proporción y pueden generar costos
+    adicionales por reprogramación.
+  </p>
+
+  <h2 id="entrega">5. Entrega y aceptación</h2>
+  <ul>
+    <li>Cada entrega se presenta en un entorno de revisión accesible por enlace.</li>
+    <li>Se incluyen <strong>dos rondas de ajustes</strong> sobre el alcance cotizado. Los cambios adicionales se cotizan aparte.</li>
+    <li>
+      La aceptación se formaliza por escrito (correo o mensaje). Si el cliente no formula observaciones en
+      <strong>10 días hábiles</strong>, la entrega se considera aceptada.
+    </li>
+    <li>La publicación en el dominio definitivo y la entrega de accesos se realizan tras el pago del saldo.</li>
+  </ul>
+
+  <h2 id="garantia">6. Garantía y soporte</h2>
+  <ul>
+    <li>
+      La Agencia corrige sin costo, durante <strong>30 días</strong> desde la aceptación, cualquier defecto de
+      funcionamiento respecto al alcance entregado.
+    </li>
+    <li>
+      La garantía no cubre cambios de alcance, modificaciones hechas por el cliente o por terceros, fallas de
+      proveedores externos, contenido publicado por el cliente, ni usos distintos a los previstos.
+    </li>
+    <li>
+      El mantenimiento continuo (actualizaciones, respaldos, monitoreo, cambios menores) se contrata como plan
+      mensual opcional. Sin plan vigente, el soporte se presta por horas según tarifa acordada.
+    </li>
+  </ul>
+
+  <h2 id="propiedad">7. Propiedad intelectual del trabajo</h2>
+  <ul>
+    <li>
+      Una vez liquidado el 100 % del precio, el cliente recibe la titularidad del código y los contenidos
+      desarrollados específicamente para su proyecto, junto con la documentación de entrega.
+    </li>
+    <li>
+      Los componentes de terceros, librerías de código abierto, tipografías e imágenes de stock conservan sus
+      propias licencias y se entregan en las condiciones que sus autores establecen.
+    </li>
+    <li>
+      La Agencia conserva la titularidad de sus metodologías, plantillas, componentes reutilizables y
+      herramientas internas, y puede reutilizarlos en otros proyectos.
+    </li>
+    <li>
+      Salvo pacto de confidencialidad por escrito, la Agencia puede mostrar el proyecto en su portafolio y
+      mencionar al cliente como referencia.
+    </li>
+    <li>El cliente garantiza que su marca, textos e imágenes no vulneran derechos de terceros.</li>
+  </ul>
+
+  <h2 id="terceros">8. Servicios de terceros</h2>
+  <p>
+    Algunos servicios dependen de proveedores externos: registro y renovación de dominios, alojamiento, redes
+    de distribución, servicios de mensajería (WhatsApp/Meta), pasarelas de pago, servicios de correo o
+    plataformas en la nube. Dichos servicios se rigen por sus propios términos y tarifas, que el cliente acepta
+    al contratarlos.
+  </p>
+  <p>
+    La Agencia no responde por caídas, cambios de política, suspensiones de cuenta o incrementos de precio
+    decididos por esos proveedores, aunque colaborará en la migración o en la reclamación correspondiente.
+    Los costos de terceros (dominio, hosting, licencias, créditos de API) no están incluidos salvo mención
+    expresa.
+  </p>
+
+  <h2 id="confidencialidad">9. Confidencialidad</h2>
+  <p>
+    Ambas partes se comprometen a mantener reserva sobre la información sensible intercambiada durante el
+    proyecto (accesos, datos de clientes, procesos internos, información financiera) y a usarla solo para
+    ejecutar el servicio. Esta obligación subsiste después de finalizada la relación.
+  </p>
+
+  <h2 id="cancelacion">10. Cancelación y suspensión</h2>
+  <ul>
+    <li>
+      Si el cliente cancela el proyecto, deberá pagar el trabajo ejecutado hasta la fecha y los costos ya
+      comprometidos con terceros. Se entregará lo producido hasta ese momento.
+    </li>
+    <li>
+      Si la Agencia cancela sin causa imputable al cliente, devolverá la parte del anticipo correspondiente al
+      trabajo no ejecutado.
+    </li>
+    <li>
+      La falta de pago habilita a la Agencia a suspender el servicio, retirar contenidos publicados y, si
+      corresponde, reclamar el saldo pendiente por las vías legales.
+    </li>
+  </ul>
+
+  <h2 id="responsabilidad">11. Límite de responsabilidad</h2>
+  <p>
+    La responsabilidad total de la Agencia frente al cliente por cualquier reclamación derivada de un servicio
+    se limita al monto efectivamente pagado por ese servicio.
+  </p>
+  <p>
+    En la medida permitida por la ley, la Agencia no responde por lucro cesante, pérdida de oportunidades de
+    negocio, pérdida de datos derivada de fallas de terceros o de la falta de respaldos del cliente, ni por
+    daños indirectos o consecuenciales.
+  </p>
+
+  <h2 id="ley">12. Ley aplicable y jurisdicción</h2>
+  <p>
+    Estos términos se rigen por las leyes de la República Bolivariana de Venezuela. Las partes procurarán
+    resolver cualquier controversia de buena fe y, de no ser posible, se someterán a los tribunales
+    competentes de la ciudad de Caracas.
+  </p>
+  <p>
+    Para consultas sobre estos términos, escríbenos a
+    <a href={`mailto:${agencia.email}`}>{agencia.email}</a> o por WhatsApp al {agencia.whatsappDisplay}.
+    Consulta también el <a href="/legal/aviso-legal">aviso legal</a> y la
+    <a href="/legal/privacidad">política de privacidad</a>.
+  </p>
+</Legal>

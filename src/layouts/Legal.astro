@@ -1,0 +1,227 @@
+---
+import { agencia } from '../data/agencia';
+
+interface Props {
+  titulo: string;
+  descripcion: string;
+  ruta: string;
+  secciones?: { id: string; texto: string }[];
+}
+
+const { titulo, descripcion, ruta, secciones = [] } = Astro.props;
+const anio = new Date().getFullYear();
+const base = (Astro.site?.toString() ?? 'https://jsolucionestegnologicas.com').replace(/\/$/, '');
+const tituloCompleto = `${titulo} — ${agencia.nombre}`;
+
+const enlaces = [
+  { href: '/legal/aviso-legal', texto: 'Aviso legal' },
+  { href: '/legal/privacidad', texto: 'Privacidad' },
+  { href: '/legal/cookies', texto: 'Cookies' },
+  { href: '/legal/terminos', texto: 'Términos' },
+];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="cv-build" content="agency-legal-v1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tituloCompleto}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={`${base}${ruta}`} />
+    <meta property="og:title" content={tituloCompleto} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`${base}${ruta}`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#doc">Saltar al contenido</a>
+
+    <header class="top">
+      <div class="wrap top-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">{agencia.mark}</span>
+          <span class="brand-name">{agencia.nombreCorto}</span>
+          <span class="brand-sub">/ Legal</span>
+        </a>
+        <nav>
+          {enlaces.map((e) => (
+            <a href={e.href} aria-current={Astro.url.pathname === e.href ? 'page' : undefined}>{e.texto}</a>
+          ))}
+        </nav>
+        <a class="pill pill-ghost" href="/">← Inicio</a>
+      </div>
+    </header>
+
+    <main id="doc" class="wrap">
+      <p class="mono dim kicker">Documento legal</p>
+      <h1>{titulo}</h1>
+      <p class="lead">{descripcion}</p>
+      <p class="mono dim meta">
+        Vigente desde el {agencia.legalActualizado} · {agencia.nombre} · {agencia.domicilio}
+      </p>
+
+      {
+        secciones.length > 0 && (
+          <nav class="toc" aria-label="Contenido del documento">
+            {secciones.map((s, i) => (
+              <a href={`#${s.id}`}>
+                <span class="mono dim">{String(i + 1).padStart(2, '0')}</span> {s.texto}
+              </a>
+            ))}
+          </nav>
+        )
+      }
+
+      <article class="doc">
+        <slot />
+      </article>
+
+      <aside class="contacto">
+        <p class="mono dim">Contacto del responsable</p>
+        <p>
+          {agencia.nombre} · {agencia.domicilio}
+          {agencia.rif ? ` · RIF ${agencia.rif}` : ''}
+        </p>
+        <p>
+          <a href={`mailto:${agencia.email}`}>{agencia.email}</a> ·
+          <a href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">
+            {agencia.whatsappDisplay}
+          </a>
+        </p>
+      </aside>
+    </main>
+
+    <footer class="wrap">
+      <span class="mono dim">© {anio} {agencia.nombre}</span>
+      <span class="legal-links">
+        {enlaces.map((e) => <a class="mono" href={e.href}>{e.texto}</a>)}
+      </span>
+      <a class="mono" href="/">Inicio →</a>
+    </footer>
+
+    <style is:global>
+      :root {
+        --bg: #0a0a0b;
+        --surface: #101012;
+        --surface-2: #151517;
+        --line: rgba(255, 255, 255, 0.08);
+        --line-soft: rgba(255, 255, 255, 0.05);
+        --ink: #f6f6f6;
+        --body: #a3a3a3;
+        --muted: #8a8a8a;
+        --accent: #4ade80;
+        --accent-soft: rgba(74, 222, 128, 0.12);
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--body);
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(760px 420px at 78% -8%, rgba(255, 255, 255, 0.06), transparent 68%);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .wrap { width: min(1200px, 92vw); margin-inline: auto; position: relative; z-index: 1; }
+      a { color: var(--ink); text-decoration: none; }
+      a:hover { color: var(--accent); }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; }
+      .dim { color: var(--muted); }
+      .skip { position: absolute; left: -999px; }
+      .skip:focus { left: 1rem; top: 1rem; z-index: 99; background: #fff; color: #000; padding: 0.5rem 1rem; }
+
+      .top {
+        position: sticky; top: 0; z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(10, 10, 11, 0.82);
+        border-bottom: 1px solid var(--line);
+      }
+      .top-inner { display: flex; align-items: center; gap: 1.5rem; padding: 0.9rem 0; flex-wrap: wrap; }
+      .brand { display: inline-flex; align-items: center; gap: 0.6rem; font-weight: 600; font-size: 0.98rem; }
+      .brand-mark {
+        display: grid; place-items: center; width: 30px; height: 30px;
+        border-radius: 50%; border: 1px solid var(--line-soft);
+        background: var(--surface-2); font-family: 'JetBrains Mono', monospace;
+        font-size: 0.66rem; color: var(--ink);
+      }
+      .brand-sub { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+      .top nav { display: flex; gap: 1.3rem; margin-left: auto; flex-wrap: wrap; }
+      .top nav a { color: var(--body); font-size: 0.86rem; }
+      .top nav a:hover, .top nav a[aria-current='page'] { color: var(--accent); }
+      .pill {
+        display: inline-flex; align-items: center; gap: 0.45rem;
+        padding: 0.55rem 1rem; border-radius: 999px; border: 1px solid var(--line);
+        font-size: 0.84rem; color: var(--ink); white-space: nowrap;
+      }
+      .pill:hover { border-color: var(--accent); color: var(--accent); }
+
+      main { padding: 3.5rem 0 1rem; max-width: 78ch; }
+      .kicker { margin: 0 0 0.8rem; }
+      h1 { color: var(--ink); font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 1rem; }
+      .lead { font-size: 1.06rem; color: var(--body); margin: 0 0 1.2rem; }
+      .meta { margin: 0 0 2rem; padding-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+
+      .toc { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem 1.2rem; margin: 0 0 2.6rem; }
+      .toc a { font-size: 0.9rem; color: var(--body); border-left: 2px solid var(--line); padding-left: 0.7rem; }
+      .toc a:hover { color: var(--accent); border-color: var(--accent); }
+
+      .doc h2 { color: var(--ink); font-size: 1.22rem; letter-spacing: -0.01em; margin: 2.4rem 0 0.7rem; }
+      .doc h2:first-child { margin-top: 0; }
+      .doc h3 { color: var(--ink); font-size: 1rem; margin: 1.6rem 0 0.4rem; }
+      .doc p, .doc li { font-size: 0.97rem; }
+      .doc p { margin: 0 0 0.9rem; }
+      .doc ul, .doc ol { margin: 0 0 1rem; padding-left: 1.2rem; }
+      .doc li { margin-bottom: 0.45rem; }
+      .doc strong { color: var(--ink); font-weight: 600; }
+      .doc a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+      .doc table { width: 100%; border-collapse: collapse; margin: 0 0 1.2rem; font-size: 0.92rem; }
+      .doc th, .doc td { text-align: left; padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+      .doc th { color: var(--ink); font-weight: 600; }
+      .doc blockquote {
+        margin: 1.2rem 0; padding: 0.9rem 1.1rem; border-left: 2px solid var(--accent);
+        background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 0.94rem;
+      }
+
+      .contacto {
+        margin: 3rem 0 0; padding: 1.2rem 1.4rem; border: 1px solid var(--line);
+        border-radius: 14px; background: var(--surface);
+      }
+      .contacto p { margin: 0 0 0.35rem; font-size: 0.92rem; }
+      .contacto p:last-child { margin-bottom: 0; }
+
+      footer {
+        display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+        padding: 1.6rem 0 2.5rem; margin-top: 2.5rem; border-top: 1px solid var(--line);
+      }
+      footer a { color: var(--accent); }
+      .legal-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+      @media (max-width: 720px) {
+        .top nav { margin-left: 0; }
+        main { padding-top: 2.4rem; }
+      }
+      @media print {
+        body { background: #fff; color: #111; }
+        .top, footer, .toc, .contacto { display: none; }
+        h1, .doc h2, .doc h3, .doc strong { color: #000; }
+      }
+    </style>
+  </body>
+</html>

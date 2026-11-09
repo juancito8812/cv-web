@@ -16,6 +16,10 @@ export const agencia = {
   email: 'juanraudel170@gmail.com',
   whatsappDisplay: '+58 412-934-0473',
   whatsappNum: '584129340473',
+  // --- Datos legales (aviso legal / privacidad) ---
+  rif: '', // RIF del titular; si queda vacío, los textos muestran "en trámite"
+  domicilio: 'Caracas, Venezuela',
+  legalActualizado: '2026-11-09',
 };
 
 export const serviciosAgencia = [

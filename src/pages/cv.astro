@@ -316,10 +316,18 @@ const anio = new Date().getFullYear();
       </section>
     </main>
 
-    <footer class="wrap">
-      <span class="mono dim">© {anio} {perfil.nombre}</span>
-      <span class="mono dim">Astro · GitHub Pages</span>
-      <a class="mono" href="/cv.pdf" download>Descargar CV ↓</a>
+    <footer class="wrap footer-legal">
+      <div class="foot-row">
+        <span class="mono dim">© {anio} {perfil.nombre}</span>
+        <span class="mono dim">Astro · GitHub Pages</span>
+        <a class="mono" href="/cv.pdf" download>Descargar CV ↓</a>
+      </div>
+      <nav class="foot-legal" aria-label="Enlaces legales">
+        <a class="mono" href="/legal/aviso-legal">Aviso legal</a>
+        <a class="mono" href="/legal/privacidad">Privacidad</a>
+        <a class="mono" href="/legal/cookies">Cookies</a>
+      </nav>
+      <p class="foot-fiscal mono dim">Sitio personal · Caracas, Venezuela</p>
     </footer>
 
     <style is:global>
@@ -626,6 +634,16 @@ const anio = new Date().getFullYear();
         padding: 1.6rem 0 2.5rem; border-top: 1px solid var(--line);
       }
       footer a { color: var(--accent); }
+
+      footer.footer-legal { flex-direction: column; align-items: stretch; }
+      .foot-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+      .foot-legal {
+        display: flex; gap: 1.2rem; flex-wrap: wrap;
+        margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line-soft);
+      }
+      .foot-legal a { color: var(--body); font-size: 0.64rem; }
+      .foot-legal a:hover { color: var(--accent); }
+      .foot-fiscal { margin: 0.65rem 0 0; font-size: 0.6rem; line-height: 1.6; }
 
       /* ---------- RESPONSIVE ---------- */
       @media (max-width: 980px) {

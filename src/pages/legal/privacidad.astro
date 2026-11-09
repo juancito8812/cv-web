@@ -1,0 +1,166 @@
+---
+import Legal from '../../layouts/Legal.astro';
+import { agencia } from '../../data/agencia';
+
+const secciones = [
+  { id: 'responsable', texto: 'Responsable' },
+  { id: 'datos', texto: 'Datos que tratamos' },
+  { id: 'finalidades', texto: 'Para qué los usamos' },
+  { id: 'base', texto: 'Base legal' },
+  { id: 'conservacion', texto: 'Cuánto tiempo' },
+  { id: 'destinatarios', texto: 'Con quién se comparten' },
+  { id: 'derechos', texto: 'Tus derechos' },
+  { id: 'seguridad', texto: 'Seguridad' },
+  { id: 'menores', texto: 'Menores de edad' },
+  { id: 'cambios', texto: 'Cambios' },
+];
+---
+
+<Legal
+  titulo="Política de privacidad"
+  descripcion={`Cómo ${agencia.nombre} recoge, usa, conserva y protege tus datos personales, y cómo ejercer tus derechos.`}
+  ruta="/legal/privacidad"
+  secciones={secciones}
+>
+  <h2 id="responsable">1. Responsable del tratamiento</h2>
+  <p>
+    El responsable de los datos personales que se tratan a través de este sitio y de los canales de contacto
+    de la Agencia es <strong>{agencia.nombre}</strong>, con domicilio en {agencia.domicilio}
+    {agencia.rif ? ` y RIF ${agencia.rif}` : ''}.
+  </p>
+  <p>
+    Para cualquier asunto relacionado con tus datos puedes escribir a
+    <a href={`mailto:${agencia.email}`}>{agencia.email}</a> indicando en el asunto
+    <em>"Datos personales"</em>, o por WhatsApp al {agencia.whatsappDisplay}.
+  </p>
+
+  <h2 id="datos">2. Qué datos tratamos</h2>
+  <p>Solo tratamos los datos necesarios para atenderte:</p>
+  <ul>
+    <li>
+      <strong>Datos de contacto y consulta:</strong> nombre, número de teléfono o WhatsApp, correo electrónico,
+      empresa y el contenido de los mensajes que nos envías, incluidos archivos o enlaces que decidas compartir.
+    </li>
+    <li>
+      <strong>Datos de clientes y proveedores:</strong> datos de identificación y facturación necesarios para
+      ejecutar el servicio contratado y cumplir obligaciones contables y fiscales.
+    </li>
+    <li>
+      <strong>Datos técnicos de navegación:</strong> dirección IP, tipo de dispositivo y navegador, fecha y hora
+      de la visita, registrados por los proveedores de alojamiento y de red como parte de sus registros de
+      seguridad.
+    </li>
+  </ul>
+  <p>
+    <strong>No solicitamos datos sensibles</strong> (salud, origen étnico, convicciones, datos biométricos ni
+    financieros detallados). Si nos envías información que no necesitamos, la eliminaremos cuando lo solicites.
+    No elaboramos perfiles publicitarios ni vendemos datos a terceros.
+  </p>
+
+  <h2 id="finalidades">3. Para qué usamos los datos</h2>
+  <ul>
+    <li>Responder consultas y solicitudes de información o de cotización.</li>
+    <li>Elaborar propuestas, cotizaciones y contratos, y ejecutar los servicios contratados.</li>
+    <li>Prestar soporte técnico y dar seguimiento a incidencias.</li>
+    <li>Emitir facturas, llevar la contabilidad y cumplir obligaciones legales, contables y fiscales.</li>
+    <li>Mantener la seguridad del sitio, prevenir fraudes y abusos, y atender requerimientos de autoridades competentes.</li>
+  </ul>
+  <p>
+    No usamos tus datos para enviarte publicidad de terceros. Si en algún momento enviamos comunicaciones
+    comerciales propias, siempre incluirán la forma de darte de baja.
+  </p>
+
+  <h2 id="base">4. Base legal del tratamiento</h2>
+  <ul>
+    <li><strong>Tu consentimiento</strong>, cuando nos escribes por WhatsApp, correo o cualquier otro canal.</li>
+    <li><strong>La ejecución del contrato</strong> o la aplicación de medidas precontractuales a tu solicitud.</li>
+    <li><strong>El cumplimiento de obligaciones legales</strong> en materia contable, fiscal y de seguridad.</li>
+    <li><strong>Nuestro interés legítimo</strong> en mantener la seguridad de los sistemas y prevenir el fraude.</li>
+  </ul>
+
+  <h2 id="conservacion">5. Cuánto tiempo conservamos los datos</h2>
+  <table>
+    <thead>
+      <tr><th>Tipo de dato</th><th>Plazo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Consultas que no se convierten en servicio</td><td>Hasta 12 meses desde el último contacto</td></tr>
+      <tr><td>Datos de clientes y facturación</td><td>Mientras dure la relación y hasta 5 años después, por obligaciones contables y fiscales</td></tr>
+      <tr><td>Registros técnicos de seguridad de proveedores</td><td>Según la política de cada proveedor (habitualmente entre 30 días y 6 meses)</td></tr>
+      <tr><td>Conversaciones de soporte</td><td>Hasta 24 meses desde el cierre del caso</td></tr>
+    </tbody>
+  </table>
+  <p>Cuando el plazo termina, los datos se eliminan o se anonimizan de forma segura.</p>
+
+  <h2 id="destinatarios">6. Con quién se comparten</h2>
+  <p>
+    No cedemos tus datos a terceros con fines comerciales. Los compartimos únicamente con proveedores que nos
+    permiten operar el sitio y atenderte, que actúan como encargados o responsables independientes:
+  </p>
+  <ul>
+    <li><strong>Alojamiento del sitio:</strong> GitHub Pages (GitHub, Inc.).</li>
+    <li><strong>Red, DNS y protección perimetral:</strong> Cloudflare, Inc.</li>
+    <li><strong>Mensajería:</strong> WhatsApp (Meta Platforms, Inc.), cuando decides escribirnos por ese canal.</li>
+    <li><strong>Correo electrónico:</strong> proveedor de correo utilizado por la Agencia.</li>
+    <li><strong>Tipografías web:</strong> Google Fonts (Google LLC), que recibe la IP del visitante al cargar la página.</li>
+    <li><strong>Asesores contables o legales</strong> y autoridades, cuando exista una obligación legal.</li>
+  </ul>
+  <p>
+    <strong>Transferencias internacionales:</strong> algunos de estos proveedores almacenan y procesan datos
+    fuera de Venezuela. Al usar el sitio o escribirnos aceptas que tus datos puedan ser tratados en esas
+    jurisdicciones, con el único fin de prestar el servicio descrito. Cuando es posible, exigimos a los
+    proveedores garantías contractuales de protección de datos.
+  </p>
+
+  <h2 id="derechos">7. Tus derechos</h2>
+  <p>Puedes ejercer en cualquier momento los siguientes derechos:</p>
+  <ul>
+    <li><strong>Acceso:</strong> saber qué datos tuyos tratamos.</li>
+    <li><strong>Rectificación y actualización:</strong> corregir datos inexactos o incompletos.</li>
+    <li><strong>Supresión:</strong> pedir que eliminemos tus datos cuando ya no sean necesarios.</li>
+    <li><strong>Oposición y limitación:</strong> oponerte a determinados tratamientos o pedir que los limitemos.</li>
+    <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</li>
+    <li><strong>Revocación del consentimiento</strong> en cualquier momento, sin afectar la licitud del tratamiento previo.</li>
+  </ul>
+  <p>
+    Para ejercerlos, escríbenos a <a href={`mailto:${agencia.email}`}>{agencia.email}</a> con el asunto
+    <em>"Derechos sobre datos personales"</em>, indicando qué derecho deseas ejercer. Podemos pedirte una
+    verificación razonable de identidad para evitar accesos indebidos. Responderemos en un plazo máximo de
+    <strong>15 días hábiles</strong>.
+  </p>
+  <p>
+    Si consideras que no hemos atendido correctamente tu solicitud, puedes acudir a la autoridad competente en
+    materia de protección de datos personales en Venezuela y a las vías judiciales ordinarias.
+  </p>
+
+  <h2 id="seguridad">8. Cómo protegemos los datos</h2>
+  <ul>
+    <li>Conexión cifrada (HTTPS) en todo el sitio y en los canales de contacto que lo permiten.</li>
+    <li>Acceso restringido a la información: solo la persona responsable de la Agencia y, cuando corresponda, el personal de soporte.</li>
+    <li>Autenticación en dos pasos en los paneles de los proveedores que la ofrecen.</li>
+    <li>Copias de seguridad periódicas de la información de trabajo.</li>
+    <li>Revisión y eliminación de datos que ya no son necesarios.</li>
+  </ul>
+  <p>
+    Ningún sistema es completamente infalible. Si ocurriera un incidente que afecte tus datos, lo notificaremos
+    a las personas afectadas y a las autoridades cuando corresponda.
+  </p>
+
+  <h2 id="menores">9. Menores de edad</h2>
+  <p>
+    Los servicios de la Agencia están dirigidos a personas mayores de 18 años y a empresas. No recopilamos
+    conscientemente datos de menores. Si detectas que un menor nos ha facilitado datos, escríbenos y los
+    eliminaremos.
+  </p>
+
+  <h2 id="cambios">10. Cambios en esta política</h2>
+  <p>
+    Podemos actualizar esta política para adaptarla a cambios normativos o en nuestros servicios. Publicaremos
+    siempre la versión vigente en esta página, indicando la fecha de actualización. Si el cambio es
+    sustancial, lo destacaremos en el sitio.
+  </p>
+  <p>
+    Para saber cómo usamos cookies y tecnologías similares, consulta la
+    <a href="/legal/cookies">política de cookies</a>.
+  </p>
+</Legal>
