@@ -1,0 +1,26 @@
+name: Build de staging (sin deploy)
+
+on:
+  push:
+    branches: [preview]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.23.4
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Build (valida la rama, no publica)
+        run: npm run build
+        env:
+          BASE_PATH: /

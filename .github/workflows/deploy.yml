@@ -2,7 +2,7 @@ name: Deploy a GitHub Pages
 
 on:
   push:
-    branches: [main, preview]
+    branches: [main]   # solo main publica; preview es staging sin deploy
   workflow_dispatch:
 
 permissions:
