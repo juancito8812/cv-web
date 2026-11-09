@@ -17,8 +17,8 @@ export const agencia = {
   whatsappDisplay: '+58 412-934-0473',
   whatsappNum: '584129340473',
   // --- Datos legales (aviso legal / privacidad) ---
-  rif: '', // RIF del titular; si queda vacío, los textos muestran "en trámite"
-  domicilio: 'Caracas, Venezuela',
+  rif: 'P-001347077', // RIF SENIAT del titular (persona natural)
+  domicilio: 'Av. Los Roques, Edif. Goaigoaza, Piso 8, Apto 5, Conjunto Residencial Villa Panamericana, Guarenas, Miranda, Zona Postal 1220',
   legalActualizado: '2026-11-09',
 };
 
