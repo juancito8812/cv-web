@@ -13,7 +13,7 @@ export const agencia = {
   base: 'Caracas, Venezuela',
   alcance: 'Caracas · Remoto global',
   operacion: '24/7 monitoreo',
-  email: 'juanraudel170@gmail.com',
+  email: 'contacto@jsolucionestegnologicas.com',
   whatsappDisplay: '+58 412-934-0473',
   whatsappNum: '584129340473',
   // --- Datos legales (aviso legal / privacidad) ---
