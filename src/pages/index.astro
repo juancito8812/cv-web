@@ -1,9 +1,10 @@
 ---
-import { perfil, servicios, habilidades, experiencia } from '../data/perfil';
+import { agencia, serviciosAgencia, agenciaStats } from '../data/agencia';
 import { proyectos } from '../data/proyectos';
 
 const enLinea = proyectos.filter((p) => p.estado === 'linea');
 const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
+const clientesLen = enLinea.filter((p) => p.cliente).length;
 const anio = new Date().getFullYear();
 ---
 
@@ -11,13 +12,13 @@ const anio = new Date().getFullYear();
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="cv-build" content="anim-v9" />
+    <meta name="cv-build" content="agency-v1" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{perfil.nombre} — {perfil.rol}</title>
-    <meta name="description" content={perfil.tagline} />
-    <meta property="og:title" content={`${perfil.nombre} — ${perfil.rol}`} />
-    <meta property="og:description" content={perfil.tagline} />
-    <meta property="og:type" content="profile" />
+    <title>{agencia.nombre} — Desarrollo web, Automatización, CCTV y Soporte TI en Caracas</title>
+    <meta name="description" content={agencia.subhead} />
+    <meta property="og:title" content={agencia.nombre} />
+    <meta property="og:description" content={agencia.subhead} />
+    <meta property="og:type" content="website" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,20 +32,19 @@ const anio = new Date().getFullYear();
     <header class="top">
       <div class="wrap top-inner">
         <a class="brand" href="#main">
-          <span class="brand-mark">JR</span>
-          <span class="brand-name">{perfil.nombres}</span>
-          <span class="brand-sub">/ CV</span>
+          <span class="brand-mark">{agencia.mark}</span>
+          <span class="brand-name">{agencia.nombreCorto}</span>
+          <span class="brand-sub">/ TI</span>
         </a>
         <nav>
-          <a href="#perfil">Perfil</a>
+          <a href="#agencia">Agencia</a>
           <a href="#servicios">Servicios</a>
-          <a href="#experiencia">Experiencia</a>
-          <a href="#proyectos">Proyectos</a>
+          <a href="#proyectos">Trabajo</a>
           <a href="#contacto">Contacto</a>
         </nav>
         <div class="top-actions">
-          <a class="pill pill-ghost" href={perfil.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a class="pill pill-solid" href={perfil.cvPdf} download>Descargar CV</a>
+          <a class="pill pill-ghost" href="/cv">Mi CV</a>
+          <a class="pill pill-solid" href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
     </header>
@@ -54,16 +54,16 @@ const anio = new Date().getFullYear();
       <section class="hero">
         <div class="wrap hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow" data-reveal><i class="dot"></i> Desarrollo · Caracas</p>
+            <p class="eyebrow" data-reveal><i class="dot"></i> {agencia.eyebrow}</p>
             <h1 data-words="320">
-              {perfil.nombres}<br />
-              <span class="h1-dim">{perfil.apellidos}</span>
+              {agencia.h1Linea1}<br />
+              <span class="h1-dim">{agencia.h1Linea2}</span>
             </h1>
-            <p class="subhead" data-words="80" data-words-base="820" set:html={perfil.rol.replace(' & ', ' &\u00A0')}></p>
-            <p class="tagline" data-reveal style="--d:1100ms">{perfil.tagline}</p>
+            <p class="subhead" data-words="80" data-words-base="820">{agencia.subhead}</p>
+            <p class="tagline" data-reveal style="--d:1100ms">{agencia.tagline}</p>
             <div class="hero-actions" data-reveal style="--d:1250ms">
-              <a class="pill pill-solid" href="#proyectos">Ver proyectos</a>
-              <a class="pill pill-ghost" href="#contacto">Hablemos →</a>
+              <a class="pill pill-solid" href="#servicios">Lo que hacemos</a>
+              <a class="pill pill-ghost" href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">WhatsApp directo →</a>
             </div>
           </div>
 
@@ -74,16 +74,16 @@ const anio = new Date().getFullYear();
                 <span class="mono dim">/ 01</span>
               </div>
               <dl class="spec">
-                <div><dt>Rol</dt><dd>Full-stack · Automatización</dd></div>
-                <div><dt>Base</dt><dd>{perfil.ubicacion.split('·')[0].trim()}</dd></div>
-                <div><dt>Foco</dt><dd>Astro · FastAPI · Docker</dd></div>
-                <div><dt>Entrega</dt><dd>Deploy continuo + monitoreo</dd></div>
+                <div><dt>Tipo</dt><dd>Agencia TI</dd></div>
+                <div><dt>Base</dt><dd>{agencia.base}</dd></div>
+                <div><dt>Alcance</dt><dd>{agencia.alcance}</dd></div>
+                <div><dt>Operación</dt><dd>{agencia.operacion}</dd></div>
               </dl>
-              <span class="figure-tag"><i class="dot"></i> Disponible para proyectos</span>
+              <span class="figure-tag"><i class="dot"></i> WhatsApp · respuesta el mismo día</span>
             </div>
             <figcaption>
               <span class="mono dim">FIG. 01</span>
-              <span class="mono dim">Perfil · CV técnico</span>
+              <span class="mono dim">Agencia · Servicios TI</span>
             </figcaption>
           </figure>
         </div>
@@ -93,56 +93,56 @@ const anio = new Date().getFullYear();
             <div>
               <span class="stat-dash"></span>
               <dt>{enLinea.length}</dt>
-              <dd>Sitios en línea</dd>
+              <dd>Sitios en producción</dd>
             </div>
             <div>
               <span class="stat-dash"></span>
-              <dt>12+</dt>
-              <dd>Tecnologías</dd>
+              <dt>{serviciosAgencia.length}</dt>
+              <dd>Servicios core</dd>
             </div>
             <div>
               <span class="stat-dash"></span>
-              <dt>{enDesarrollo.length}</dt>
-              <dd>En desarrollo</dd>
+              <dt>{clientesLen}</dt>
+              <dd>Clientes activos</dd>
             </div>
             <div>
               <span class="stat-dash"></span>
-              <dt>24/7</dt>
+              <dt>{'24/7'}</dt>
               <dd>Monitoreo</dd>
             </div>
           </dl>
         </div>
       </section>
 
-      <!-- PERFIL -->
-      <section id="perfil" class="section">
+      <!-- AGENCIA -->
+      <section id="agencia" class="section">
         <div class="wrap">
           <header class="sec-head">
             <p class="eyebrow"><i class="dot"></i> Perfil</p>
-            <h2 data-words="170">Quién está detrás<br />de este portafolio</h2>
+            <h2 data-words="170">Tecnología que entrega<br />y se queda funcionando</h2>
           </header>
           <div class="cols">
             <div class="prose">
               <p class="lead">
-                Desarrollador full-stack radicado en Caracas, con formación autodidacta y capacitación
-                continua. Aprendí construyendo sistemas reales para clientes y para mis propios productos: tiendas en línea, plataformas de pronósticos,
-                generadores de QR dinámicos y automatizaciones de mensajería. Todo lo que hago termina
-                publicado y en uso.
+                J Solución Tecnológica atiende el stack completo de un negocio pequeño: la web que
+                vende, la automatización que contesta sola, las cámaras que graban y los servidores
+                que no se caen. Diseño, instalación y mantenimiento por la misma persona de contacto —
+                sin un proveedor distinto para cada cosa.
               </p>
               <p>
-                Trabajo con despliegue continuo (GitHub Actions + Cloudflare), bases de datos con reglas de
-                seguridad por fila, contenedores Docker y monitoreo con alertas. Todo lo que aparece en esta
-                página está publicado y se puede visitar.
+                Detrás de la agencia hay proyectos reales en producción con clientes en Venezuela y
+                EE. UU., apps Android publicadas y un producto propio de QR dinámicos por suscripción.
+                Todo lo entregado está publicado, monitoreado y con soporte — lo puedes visitar hoy.
               </p>
             </div>
             <aside class="card-side">
               <span class="mono dim">Datos</span>
               <ul class="facts">
-                <li><span>Ubicación</span><strong>{perfil.ubicacion}</strong></li>
-                <li><span>Idiomas</span><strong>Español (nativo) · Inglés técnico</strong></li>
-                <li><span>Modalidad</span><strong>Remoto · Proyectos por hitos</strong></li>
-                <li><span>Formación</span><strong>Autodidacta · capacitación continua</strong></li>
-                <li><span>GitHub</span><strong><a href={perfil.github} target="_blank" rel="noopener noreferrer">juancito8812 ↗</a></strong></li>
+                <li><span>Fundador</span><strong>Juan Raudel Sanchez Payan · <a href="/cv">CV técnico →</a></strong></li>
+                <li><span>Base</span><strong>{agencia.base}</strong></li>
+                <li><span>Modalidad</span><strong>Proyecto nuevo o mantenimiento</strong></li>
+                <li><span>Cobertura</span><strong>Caracas presencial · resto remoto</strong></li>
+                <li><span>Trabajo</span><strong><a href="#proyectos">Portafolio en producción ↓</a></strong></li>
               </ul>
             </aside>
           </div>
@@ -154,14 +154,14 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <header class="sec-head">
             <p class="eyebrow"><i class="dot"></i> Servicios</p>
-            <h2 data-words="170">Lo que puedo<br />construir para ti</h2>
+            <h2 data-words="170">Lo que resolvemos<br />de punta a punta</h2>
           </header>
           <div class="grid-3">
             {
-              servicios.map((s, i) => (
+              serviciosAgencia.map((s, i) => (
                 <article class="card" data-reveal>
                   <div class="card-top">
-                    <span class="card-icon">{['▤', '▢', '◆', '⚙', '◈', '⌘'][i] ?? '▤'}</span>
+                    <span class="card-icon">{['▤', '◆', '◎', '⚙'][i] ?? '▤'}</span>
                     <span class="mono dim">{String(i + 1).padStart(2, '0')}</span>
                   </div>
                   <h3>{s.titulo}</h3>
@@ -172,50 +172,12 @@ const anio = new Date().getFullYear();
             <a class="card card-cta" href="#contacto">
               <div class="card-top">
                 <span class="card-icon">→</span>
-                <span class="mono dim">06</span>
+                <span class="mono dim">05</span>
               </div>
-              <h3>¿Otro tipo de proyecto?</h3>
-              <p>Cuéntame qué necesitas y te digo con franqueza si puedo resolverlo, cuánto tarda y qué cuesta.</p>
-              <span class="mono cta-link">Escríbeme →</span>
+              <h3>¿Otra cosa?</h3>
+              <p>Cuéntanos qué necesitas y te decimos con franqueza si lo resolvemos, cuánto tarda y qué cuesta.</p>
+              <span class="mono cta-link">Escríbenos →</span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- EXPERIENCIA -->
-      <section id="experiencia" class="section">
-        <div class="wrap">
-          <header class="sec-head">
-            <p class="eyebrow"><i class="dot"></i> Experiencia</p>
-            <h2 data-words="170">Trabajo, en orden<br />cronológico</h2>
-          </header>
-
-          <ol class="timeline">
-            {
-              experiencia.map((e, i) => (
-                <li>
-                  <span class="mono dim tl-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div class="tl-body">
-                    <div class="tl-head">
-                      <h3>{e.puesto}</h3>
-                      <span class="mono period">{e.periodo}</span>
-                    </div>
-                    <ul class="bullets">
-                      {e.puntos.map((p) => (
-                        <li>{p}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              ))
-            }
-          </ol>
-
-          <div class="skills">
-            <p class="eyebrow"><i class="dot"></i> Stack</p>
-            <ul class="chips">
-              {habilidades.map((h) => <li>{h}</li>)}
-            </ul>
           </div>
         </div>
       </section>
@@ -225,10 +187,10 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <header class="sec-head sec-head-row">
             <div>
-              <p class="eyebrow"><i class="dot"></i> Proyectos</p>
-              <h2 data-words="170">Trabajo en vivo</h2>
+              <p class="eyebrow"><i class="dot"></i> Trabajo</p>
+              <h2 data-words="170">En producción,<br />lo puedes visitar</h2>
             </div>
-            <a class="pill pill-ghost" href={perfil.github} target="_blank" rel="noopener noreferrer">Ver repositorios →</a>
+            <a class="pill pill-ghost" href="https://github.com/juancito8812" target="_blank" rel="noopener noreferrer">Repositorios ↗</a>
           </header>
 
           <h3 class="sub">En producción <span class="mono count">{enLinea.length}</span></h3>
@@ -299,17 +261,17 @@ const anio = new Date().getFullYear();
           <div class="contact-box hatch">
             <div class="contact-copy">
               <p class="eyebrow"><i class="dot"></i> Contacto</p>
-              <h2 data-words="170">¿Construimos<br />algo juntos?</h2>
+              <h2 data-words="170">Cuéntanos<br />qué necesitas</h2>
               <p class="contact-note">
-                Proyecto nuevo, mantenimiento o algo que ya existe y necesita manos. Respondo el mismo día.
+                Web nueva, automatización, cámaras o mantenimiento. Te respondemos el mismo día.
               </p>
             </div>
             <div class="contact-side">
               <ul class="facts">
-                <li><span>Correo</span><strong><a href={`mailto:${perfil.email}`}>{perfil.email}</a></strong></li>
-                <li><span>WhatsApp</span><strong><a href={`https://wa.me/${perfil.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer">{perfil.whatsapp}</a></strong></li>
+                <li><span>WhatsApp</span><strong><a href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">{agencia.whatsappDisplay}</a></strong></li>
+                <li><span>Correo</span><strong><a href={`mailto:${agencia.email}`}>{agencia.email}</a></strong></li>
               </ul>
-              <a class="pill pill-solid" href={`mailto:${perfil.email}`}>Enviar correo →</a>
+              <a class="pill pill-solid" href={`https://wa.me/${agencia.whatsappNum}`} target="_blank" rel="noopener noreferrer">WhatsApp directo →</a>
             </div>
           </div>
         </div>
@@ -317,9 +279,9 @@ const anio = new Date().getFullYear();
     </main>
 
     <footer class="wrap">
-      <span class="mono dim">© {anio} {perfil.nombre}</span>
+      <span class="mono dim">© {anio} {agencia.nombre}</span>
       <span class="mono dim">Astro · GitHub Pages</span>
-      <a class="mono" href={perfil.cvPdf} download>Descargar CV ↓</a>
+      <a class="mono" href="/cv">CV del fundador →</a>
     </footer>
 
     <style is:global>
