@@ -23,9 +23,9 @@ npm run preview        # sirve dist/ para revisar local
 ## 3. Deploy
 
 - Repo `juancito8812/cv-web`. `CNAME` = dominio propio sobre GitHub Pages.
-- **Ojo: `.github/workflows/deploy.yml` despliega desde `main` *y* `preview` al mismo entorno `github-pages`.**
-  Un push a `preview` ya publica en `jsolucionestegnologicas.com` (hay un solo slot de Pages). Tratar cualquier
-  push a `preview` como un deploy a producción; mientras eso siga así, no hay staging real en el repo.
+- `.github/workflows/deploy.yml` **solo escucha `main`** (verificado 9-nov-2026): un push a `preview` NO publica.
+  `.github/workflows/preview-build.yml` compila `preview` solo para validar (CI, sin deploy). Staging real
+  para previews: `https://jsolucion.serverjr.uk` (nginx debianm700, noindex).
 - Workflow `.github/workflows/deploy.yml` corre en cada push a `main`: build + publicar en Pages.
 - Cloudflare delante (proxy + SSL strict). Tras un deploy, verificar en vivo:
   `curl -s https://jsolucionestegnologicas.com/legal/aviso-legal/ | grep -o 'P-001347077'`.
