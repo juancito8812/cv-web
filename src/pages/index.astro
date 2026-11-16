@@ -1,6 +1,7 @@
 ---
 import { agencia, serviciosAgencia, agenciaStats } from '../data/agencia';
 import { proyectos } from '../data/proyectos';
+import { demoCondominios } from '../data/demo';
 
 const enLinea = proyectos.filter((p) => p.estado === 'linea');
 const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
@@ -221,6 +222,36 @@ const anio = new Date().getFullYear();
               ))
             }
           </div>
+
+          <aside class="demo" data-reveal>
+            <div class="demo-head">
+              <p class="eyebrow"><i class="dot"></i> Demo abierta · {demoCondominios.nombre}</p>
+              <h3 class="demo-title">Administración de condominios, funciona en vivo</h3>
+              <p class="demo-desc">{demoCondominios.descripcion}</p>
+            </div>
+            <div class="demo-body">
+              <div class="demo-creds">
+                <span class="mono dim">Cuentas de prueba</span>
+                {
+                  demoCondominios.cuentas.map((c) => (
+                    <div class="demo-cred">
+                      <span class="demo-rol">{c.rol}</span>
+                      <span class="demo-detalle">{c.detalle}</span>
+                      <span class="mono demo-dato" data-mail={`${c.email.split('@')[0]}#${c.email.split('@')[1]}`}><noscript>{c.email.replace('@', ' [at] ')}</noscript></span>
+                      <span class="mono demo-dato demo-pw">{c.clave}</span>
+                    </div>
+                  ))
+                }
+              </div>
+              <div class="demo-cta">
+                <a class="pill pill-solid" href={demoCondominios.url} target="_blank" rel="noopener noreferrer">Abrir la demo ↗</a>
+                <span class="mono demo-url">{demoCondominios.url.replace(/^https?:\/\//, '')}</span>
+                <ul class="stack demo-stack">
+                  {demoCondominios.stack.map((s) => <li>{s}</li>)}
+                </ul>
+              </div>
+            </div>
+          </aside>
 
           <h3 class="sub">En desarrollo <span class="mono count">{enDesarrollo.length}</span></h3>
           <div class="grid-2">
@@ -472,6 +503,33 @@ const anio = new Date().getFullYear();
         letter-spacing: 0.16em; text-transform: uppercase; color: var(--body); font-weight: 400;
       }
       .count { color: var(--accent); }
+      /* Demo en vivo (condominios) */
+      .demo {
+        margin-top: 1.6rem; padding: clamp(1.3rem, 3vw, 2rem);
+        border: 1px solid var(--line); border-radius: var(--r-panel);
+        background: linear-gradient(180deg, var(--surface), var(--bg));
+        display: grid; gap: 1.4rem;
+      }
+      .demo-title { margin: 0.5rem 0 0.6rem; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.01em; }
+      .demo-desc { margin: 0; max-width: 62ch; }
+      .demo-body { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; align-items: start; }
+      .demo-creds { display: grid; gap: 0.6rem; }
+      .demo-cred {
+        display: grid; gap: 0.15rem;
+        padding: 0.85rem 0.95rem; border: 1px solid var(--line-soft);
+        border-radius: var(--r-card); background: var(--surface-2);
+      }
+      .demo-rol { font-size: 0.92rem; font-weight: 600; color: var(--ink); }
+      .demo-detalle { font-size: 0.85rem; color: var(--muted); }
+      .demo-dato { color: var(--ink); text-transform: none; letter-spacing: 0.02em; font-size: 0.78rem; word-break: break-all; }
+      .demo-pw { color: var(--accent); }
+      .demo-cta { display: grid; gap: 0.5rem; justify-items: start; }
+      .demo-url { color: var(--muted); text-transform: none; letter-spacing: 0.04em; }
+      .demo-stack { margin: 0.3rem 0 0; }
+      @media (max-width: 760px) {
+        .demo-body { grid-template-columns: 1fr; }
+      }
+
       .cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
       .prose p { margin: 0 0 1rem; max-width: 62ch; }
       .lead { font-size: 1.12rem; color: #d4d4d4; }
@@ -694,6 +752,18 @@ const anio = new Date().getFullYear();
         a { color: #0a6b46 !important; text-decoration: none !important; }
       }
     </style>
+
+    <script is:inline>
+      // Credenciales de demo: el correo se arma en el cliente para que el
+      // ofuscador de correos de Cloudflare no lo reemplace por [email protected].
+      (function () {
+        var nodos = document.querySelectorAll('[data-mail]');
+        for (var i = 0; i < nodos.length; i++) {
+          var partes = (nodos[i].getAttribute('data-mail') || '').split('#');
+          if (partes.length === 2) nodos[i].textContent = partes[0] + '@' + partes[1];
+        }
+      })();
+    </script>
 
     <script is:inline>
       (function () {
