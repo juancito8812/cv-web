@@ -17,6 +17,14 @@ npm run preview      # revisar dist/ localmente
 - Staging para previews: `https://jsolucion.serverjr.uk` (nginx debianm700, noindex).
 - Después de cada merge a `main`, verificar en vivo: `curl -s https://jsolucionestegnologicas.com/legal/aviso-legal/ | grep -o 'P-001347077'`.
 
+## Demo en vivo (home)
+
+La home muestra la demo abierta de **administración de condominios** (`src/data/demo.ts`):
+edificio ficticio "Residencial Los Samanes" corriendo en `https://condominios-demo.serverjr.uk`.
+Regla dura: solo se publican las 2 cuentas de vista limitada (junta + vecino); la cuenta **admin nunca**
+aparece en la web. La tarjeta "Condominios App" del listado de trabajo se retiró el 15-nov-2026 — queda
+solo la demo en vivo. Detalles en [`AGENTS.md`](AGENTS.md) §6.
+
 ## Trampas rápidas
 
 - Node fijado 22.23.4 en el CI (bug del toolcache): no "modernizar" sin probar el workflow.

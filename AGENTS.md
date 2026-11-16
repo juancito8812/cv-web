@@ -9,6 +9,8 @@
 - `src/data/agencia.ts` — **fuente única** de la agencia: nombre, RIF, domicilio fiscal, email, WhatsApp, servicios.
   Lo que cambies ahí se propaga a home, footer y las 4 páginas legales en el siguiente build.
 - `src/data/perfil.ts` — datos del CV personal (`/cv`) y del PDF.
+- `src/data/demo.ts` — datos de la **demo en vivo de condominios** que se publica en la home (§6): edificio,
+  URL, stack y las 2 cuentas de vista limitada. La cuenta admin nunca va aquí ni en ningún otro archivo.
 - `public/cv.pdf` — PDF del CV; se regenera con CDP `printToPDF` contra `/cv`, no se edita a mano.
 - `CNAME` = `jsolucionestegnologicas.com`. `astro.config.mjs` define `base` para que `/cv` funcione bajo el dominio.
 
@@ -50,3 +52,22 @@ npm run preview        # sirve dist/ para revisar local
 3. Los textos legales leen `agencia.ts`; si `rif` queda vacío el sitio escribe "RIF en trámite" — no lo dejes vacío.
 4. El CI fija Node 22.23.4 por un bug del toolcache; no "modernizar" la versión sin probar el workflow.
 5. Verificar siempre la página real después del deploy; el CI verde no garantiza que el dominio sirvió el commit nuevo.
+6. Al tocar el catálogo, grepear el producto retirado en el HTML servido y el PDF:
+   `grep -o 'Condominios App' <html-servido> | wc -l` → 0 (la tarjeta se retiró el 15-nov-2026; queda solo la
+   demo en vivo de §6, que se llama "Condominios" sin "App").
+
+## 6. Demo en vivo de condominios (publicada 15-nov-2026)
+
+- La home lleva un bloque "Demo abierta · Residencial Los Samanes" dentro de la sección de trabajo: edificio
+  ficticio funcionando de verdad en `https://condominios-demo.serverjr.uk` (app Next.js + Postgres en su propio
+  VPS, no este repo — el código vive en `condominios-app`).
+- **Regla de credenciales**: solo se publican las 2 cuentas de vista limitada (junta de condominio y un vecino),
+  definidas en `src/data/demo.ts` con el correo ofuscado en cliente (`data-mail` + noscript). La cuenta
+  **admin nunca** se publica ni en texto ni en comentario HTML ni en `data-*`: es un panel con permisos totales
+  abierto a internet. Antes de pushear cualquier cambio del bloque: `grep -o 'directivo@\|inquilino-' <html>`
+  (=1 cada uno) y que no exista ningún email de admin en el HTML servido.
+- Las credenciales del demo se validaron contra la app real al publicarlas; si se rotan en el VPS, actualizar
+  `src/data/demo.ts` en el mismo commit y volver a probarlas con login real.
+- Verificación del bloque en producción:
+  `curl -s https://jsolucionestegnologicas.com/ | grep -c 'Los Samanes'` (≥1) y
+  `curl -s -o /dev/null -w '%{http_code}' https://condominios-demo.serverjr.uk/` (307 → redirect a login; 200 OK).
