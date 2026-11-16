@@ -71,11 +71,4 @@ export const proyectos: Proyecto[] = [
     stack: ['Flutter', 'Dart', 'USGS API'],
     estado: 'desarrollo',
   },
-  {
-    nombre: 'Condominios App',
-    descripcion:
-      'Administración multi-condominio: alícuotas, egresos, multas e incidencias con roles y auditoría. Esquema Postgres versionado en SQL y acceso directo con `pg`.',
-    stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    estado: 'desarrollo',
-  },
 ];
