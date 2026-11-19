@@ -691,8 +691,10 @@ const anio = new Date().getFullYear();
       }
 
       @media print {
-        /* el encabezado de sección no se queda huérfano al pie de página */
+        /* los títulos de sección y subsección no se quedan huérfanos al pie de página */
         #proyectos .sec-head { break-after: avoid; page-break-after: avoid; }
+        #proyectos .sub { break-after: avoid; page-break-after: avoid; }
+        #proyectos .grid-2 + .sub { break-before: auto; }
         [data-reveal], .wv, .timeline > li { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
         :root {
           --bg: #fff; --surface: #fff; --surface-2: #fff;

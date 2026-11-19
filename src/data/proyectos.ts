@@ -10,6 +10,11 @@ export interface Proyecto {
   estado: Estado;
   /** true = hecho para un cliente; false/omitido = producto propio. */
   cliente?: boolean;
+  /**
+   * true = solo se lista en el CV (/cv y cv.pdf), nunca en el catálogo de la home.
+   * Se usa para demos y productos con datos ficticios que no van al portafolio público.
+   */
+  soloCv?: boolean;
 }
 
 // Estado verificado por HTTP y por git el 30-oct-2026 (200 = en vivo).
@@ -48,6 +53,15 @@ export const proyectos: Proyecto[] = [
     stack: ['FastAPI', 'PostgreSQL', 'Docker', 'Caddy', 'VPS'],
     url: 'https://qrcoder.win',
     estado: 'linea',
+  },
+  {
+    nombre: 'Administración de condominios (demo abierta)',
+    descripcion:
+      'Sistema completo de administración de edificios, corriendo en vivo con un edificio de prueba: cobranza con recibos y morosidad, estado de cuenta por apartamento, comunicados, reservas de áreas comunes e incidencias con seguimiento. Cada condominio va en su propio VPS, con base aislada y permisos por rol (junta, vecino, administración).',
+    stack: ['Next.js', 'PostgreSQL', 'Rol de BD aislado', 'Docker', 'Caddy'],
+    url: 'https://condominios-demo.serverjr.uk',
+    estado: 'linea',
+    soloCv: true,
   },
   {
     nombre: 'Tasa del Día',

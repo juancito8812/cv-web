@@ -3,8 +3,9 @@ import { agencia, serviciosAgencia, agenciaStats } from '../data/agencia';
 import { proyectos } from '../data/proyectos';
 import { demoCondominios } from '../data/demo';
 
-const enLinea = proyectos.filter((p) => p.estado === 'linea');
-const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
+const publicos = proyectos.filter((p) => !p.soloCv);
+const enLinea = publicos.filter((p) => p.estado === 'linea');
+const enDesarrollo = publicos.filter((p) => p.estado === 'desarrollo');
 const clientesLen = enLinea.filter((p) => p.cliente).length;
 const anio = new Date().getFullYear();
 ---

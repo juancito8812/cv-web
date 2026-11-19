@@ -5,7 +5,7 @@ export const perfil = {
   rol: 'Desarrollador Web Full-Stack & Automatización',
   ubicacion: 'Caracas, Venezuela · Remoto',
   tagline:
-    'Construyo sitios y aplicaciones que ya están en producción: 4 proyectos en vivo (3 de clientes y un producto propio), apps Android publicadas y automatizaciones de WhatsApp. Nada de maquetas.',
+    'Construyo sitios y aplicaciones que ya están en producción: 5 sistemas en vivo (3 de clientes, un producto propio y una demo abierta), apps Android publicadas y automatizaciones de WhatsApp. Nada de maquetas.',
   email: 'juanraudel170@gmail.com',
   whatsapp: '+58 412-934-0473',
   github: 'https://github.com/juancito8812',
