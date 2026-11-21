@@ -62,6 +62,7 @@ const anio = new Date().getFullYear();
               {agencia.h1Linea1}<br />
               <span class="h1-dim">{agencia.h1Linea2}</span>
             </h1>
+            <p class="eslogan" data-reveal>{agencia.eslogan}</p>
             <p class="subhead" data-words="80" data-words-base="820">{agencia.subhead}</p>
             <p class="tagline" data-reveal style="--d:1100ms">{agencia.tagline}</p>
             <div class="hero-actions" data-reveal style="--d:1250ms">
@@ -437,9 +438,13 @@ const anio = new Date().getFullYear();
         color: var(--ink); overflow-wrap: break-word;
       }
       .h1-dim { color: var(--ink); }
+      .eslogan {
+        margin: 0 0 0.55rem; font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+        font-weight: 600; color: var(--ink); letter-spacing: -0.022em; max-width: 34ch;
+      }
       .subhead {
-        margin: 0 0 1.1rem; font-size: clamp(1.1rem, 1.7vw, 1.4rem);
-        font-weight: 500; color: var(--ink); letter-spacing: -0.015em; max-width: 30ch;
+        margin: 0 0 1.1rem; font-size: clamp(0.98rem, 1.2vw, 1.06rem);
+        font-weight: 400; color: var(--body); letter-spacing: 0; max-width: 44ch;
       }
       .tagline { margin: 0 0 2rem; max-width: 46ch; font-size: 1rem; color: var(--body); }
       .hero-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }

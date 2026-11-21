@@ -7,9 +7,10 @@ export const agencia = {
   eyebrow: 'Web · Automatización · CCTV · Soporte',
   h1Linea1: 'J Solución',
   h1Linea2: 'Tecnológica',
+  eslogan: 'Lo entregamos funcionando, no maquetas.',
   subhead: 'Agencia TI en Caracas: sitios y apps en producción, automatización de WhatsApp, cámaras con acceso remoto y soporte de servidores.',
   tagline:
-    'Instalamos y mantenemos lo que tu negocio necesita para operar: la web, la automatización, las cámaras y los servidores. Lo entregamos funcionando en producción, no maquetas.',
+    'Instalamos y mantenemos lo que tu negocio necesita para operar: la web, la automatización, las cámaras y los servidores.',
   base: 'Caracas, Venezuela',
   alcance: 'Caracas · Remoto global',
   operacion: '24/7 monitoreo',
