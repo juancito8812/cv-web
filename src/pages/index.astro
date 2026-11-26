@@ -8,6 +8,7 @@ const publicos = proyectos.filter((p) => !p.soloCv);
 const enLinea = publicos.filter((p) => p.estado === 'linea');
 const enDesarrollo = publicos.filter((p) => p.estado === 'desarrollo');
 const clientesLen = enLinea.filter((p) => p.cliente).length;
+const base = (Astro.site?.toString() ?? 'https://jsolucionestegnologicas.com').replace(/\/$/, '');
 const anio = new Date().getFullYear();
 ---
 
@@ -22,6 +23,8 @@ const anio = new Date().getFullYear();
     <meta property="og:title" content={agencia.nombre} />
     <meta property="og:description" content={agencia.subhead} />
     <meta property="og:type" content="website" />
+    <link rel="canonical" href={base + "/"} />
+    <meta property="og:url" content={base + "/"} />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
