@@ -71,3 +71,7 @@ npm run preview        # sirve dist/ para revisar local
 - Verificación del bloque en producción:
   `curl -s https://jsolucionestegnologicas.com/ | grep -c 'Los Samanes'` (≥1) y
   `curl -s -o /dev/null -w '%{http_code}' https://condominios-demo.serverjr.uk/` (307 → redirect a login; 200 OK).
+
+## Grafo de conocimiento (understand-anything)
+
+Este repo tiene un grafo de conocimiento listo en `.ua/knowledge-graph.json`: nodos (files, endpoints, tables, flows de negocio), aristas y dominios. **Para entender el código, lee primero el grafo** — no el árbol completo. Uso y regeneración: `../GRAFOS-CODIGO.md` (raíz del workspace). En Hermes hay skills `understand-*` listas. El `.ua/` no se commitea (regenerable).

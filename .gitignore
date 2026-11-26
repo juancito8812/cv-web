@@ -4,3 +4,6 @@ dist/
 *.log
 .DS_Store
 dist-preview/
+
+# grafo understand-anything (regenerable, local)
+.ua/
