@@ -2,11 +2,13 @@
 import { agencia, serviciosAgencia, agenciaStats } from '../data/agencia';
 import { proyectos } from '../data/proyectos';
 import { demoCondominios } from '../data/demo';
+import '../styles/fonts.css';
 
 const publicos = proyectos.filter((p) => !p.soloCv);
 const enLinea = publicos.filter((p) => p.estado === 'linea');
 const enDesarrollo = publicos.filter((p) => p.estado === 'desarrollo');
 const clientesLen = enLinea.filter((p) => p.cliente).length;
+const base = (Astro.site?.toString() ?? 'https://jsolucionestegnologicas.com').replace(/\/$/, '');
 const anio = new Date().getFullYear();
 ---
 
@@ -21,12 +23,12 @@ const anio = new Date().getFullYear();
     <meta property="og:title" content={agencia.nombre} />
     <meta property="og:description" content={agencia.subhead} />
     <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="canonical" href={base + "/"} />
+    <meta property="og:url" content={base + "/"} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -95,22 +97,18 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <dl class="stats">
             <div>
-              <span class="stat-dash"></span>
               <dt>{enLinea.length}</dt>
               <dd>Sitios en producción</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>{serviciosAgencia.length}</dt>
               <dd>Servicios core</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>{clientesLen}</dt>
               <dd>Clientes activos</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>{'24/7'}</dt>
               <dd>Monitoreo</dd>
             </div>
@@ -489,7 +487,8 @@ const anio = new Date().getFullYear();
       }
       .stats > div { padding: 1.5rem 1.4rem; border-left: 1px solid var(--line-soft); }
       .stats > div:first-child { border-left: 0; padding-left: 0; }
-      .stat-dash { display: block; width: 18px; height: 1px; background: var(--muted); margin-bottom: 0.9rem; }
+      /* la rayita va por CSS: dentro del <dl> solo valen <dt>/<dd>/<div> (Lighthouse definition-list) */
+      .stats > div::before { content: ""; display: block; width: 18px; height: 1px; background: var(--muted); margin-bottom: 0.9rem; }
       .stats dt { font-size: 1.9rem; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
       .stats dd { margin: 0.5rem 0 0; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 

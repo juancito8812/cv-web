@@ -1,9 +1,11 @@
 ---
 import { perfil, servicios, habilidades, experiencia } from '../data/perfil';
 import { proyectos } from '../data/proyectos';
+import '../styles/fonts.css';
 
 const enLinea = proyectos.filter((p) => p.estado === 'linea');
 const enDesarrollo = proyectos.filter((p) => p.estado === 'desarrollo');
+const base = (Astro.site?.toString() ?? 'https://jsolucionestegnologicas.com').replace(/\/$/, '');
 const anio = new Date().getFullYear();
 ---
 
@@ -18,12 +20,12 @@ const anio = new Date().getFullYear();
     <meta property="og:title" content={`${perfil.nombre} — ${perfil.rol}`} />
     <meta property="og:description" content={perfil.tagline} />
     <meta property="og:type" content="profile" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="canonical" href={base + "/cv/"} />
+    <meta property="og:url" content={base + "/cv/"} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -91,22 +93,18 @@ const anio = new Date().getFullYear();
         <div class="wrap">
           <dl class="stats">
             <div>
-              <span class="stat-dash"></span>
               <dt>{enLinea.length}</dt>
               <dd>Sitios en línea</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>12+</dt>
               <dd>Tecnologías</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>{enDesarrollo.length}</dt>
               <dd>En desarrollo</dd>
             </div>
             <div>
-              <span class="stat-dash"></span>
               <dt>24/7</dt>
               <dd>Monitoreo</dd>
             </div>
@@ -486,7 +484,8 @@ const anio = new Date().getFullYear();
       }
       .stats > div { padding: 1.5rem 1.4rem; border-left: 1px solid var(--line-soft); }
       .stats > div:first-child { border-left: 0; padding-left: 0; }
-      .stat-dash { display: block; width: 18px; height: 1px; background: var(--muted); margin-bottom: 0.9rem; }
+      /* la rayita va por CSS: dentro del <dl> solo valen <dt>/<dd>/<div> (Lighthouse definition-list) */
+      .stats > div::before { content: ""; display: block; width: 18px; height: 1px; background: var(--muted); margin-bottom: 0.9rem; }
       .stats dt { font-size: 1.9rem; font-weight: 500; letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
       .stats dd { margin: 0.5rem 0 0; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
 
