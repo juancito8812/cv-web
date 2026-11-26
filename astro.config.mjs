@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 const base = process.env.BASE_PATH || '/';
 
 export default defineConfig({
-  site: 'https://jsolucionestegnologicas.com',
+  site: process.env.SITE_URL || 'https://jsolucionestegnologicas.com',
   base,
   build: { format: 'directory', inlineStylesheets: 'always' },
 });
