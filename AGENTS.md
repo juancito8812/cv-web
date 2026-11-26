@@ -52,7 +52,14 @@ npm run preview        # sirve dist/ para revisar local
 3. Los textos legales leen `agencia.ts`; si `rif` queda vacío el sitio escribe "RIF en trámite" — no lo dejes vacío.
 4. El CI fija Node 22.23.4 por un bug del toolcache; no "modernizar" la versión sin probar el workflow.
 5. Verificar siempre la página real después del deploy; el CI verde no garantiza que el dominio sirvió el commit nuevo.
-6. Al tocar el catálogo, grepear el producto retirado en el HTML servido y el PDF:
+6. **Rendimiento móvil cerrado (26-nov-2026): no volver a Google Fonts.** Las fuentes viven en
+   `public/fonts/` (Inter + JetBrains Mono, cada una con su `OFL-*.txt`) y se cargan desde
+   `src/styles/fonts.css`; el CSS va en línea (`inlineStylesheets: 'always'` en `astro.config.mjs`).
+   Si agregas una familia, descarga el `.woff2` y su licencia OFL al repo — no un `<link>` externo.
+   `SITE_URL=https://jsolucion.serverjr.uk npm run build` compila la preview con su propio canonical;
+   sin `SITE_URL` el canonical apunta al dominio de producción. Baseline verificado en vivo (26-nov):
+   100/100/100/100 en home, `/cv/` y legales, LCP 0.8 s.
+7. Al tocar el catálogo, grepear el producto retirado en el HTML servido y el PDF:
    `grep -o 'Condominios App' <html-servido> | wc -l` → 0 (la tarjeta se retiró el 15-nov-2026; queda solo la
    demo en vivo de §6, que se llama "Condominios" sin "App").
 
