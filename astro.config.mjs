@@ -7,5 +7,5 @@ const base = process.env.BASE_PATH || '/';
 export default defineConfig({
   site: 'https://jsolucionestegnologicas.com',
   base,
-  build: { format: 'directory' },
+  build: { format: 'directory', inlineStylesheets: 'always' },
 });
